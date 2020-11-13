@@ -1,0 +1,28 @@
+<%- include partials/header.ejs %>  
+
+<%- include partials/main_nav.ejs %>  
+
+<main uk-scrollspy="target: > div.animated; cls: uk-animation-slide-bottom-medium; delay: 100; repeat: true">
+    <div class="animated">    
+        <div class="uk-container my-5">
+            <h1 class="main-text text-center">About learnt</h1>
+            <h3 class="main-text text-center">teachers + students = community</h3>
+            <p class="uk-text-large">We are a passionate community of teachers and students from over 100 countries and territories around the world with diverse interests who are dedicated towards sharing knowledge and experience with each other.</p>
+
+            
+        </div>
+    </div>    
+
+    <div class="animated uk-container">
+        <img src="/Assets/images/cheer.jpg" alt="">
+
+        <h2 class="main-text text-center mb-5">Made in Toronto, Canada</h2>
+    </div>
+
+    <%- include auth/login-modal.ejs %>      
+
+</main>
+
+<%- include partials/bottom_nav.ejs %>      
+
+<%- include partials/footer.ejs %>   

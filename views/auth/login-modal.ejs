@@ -1,0 +1,45 @@
+<!-- Login Modal -->
+    <div id="login-modal" class="uk-modal-full" uk-modal>
+      <div class="uk-modal-dialog">
+          <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+          <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+              <div class="uk-background-cover" style="background-image: url('/Assets/images/loginPic.jpg');" uk-height-viewport></div>
+              <div class="uk-padding-large">
+
+                  <h1 class="main-text mb-0">Login</h1>
+
+                   <!-- BEGIN SECTION : FORM  -->
+                   <form class="uk-form-horizontal my-5 d-block mx-auto" method="POST" autocomplete="off">
+    
+                    <div >
+                        <!-- USERNAME -->
+                        <div class="mb-3 mt-0">
+                            <label class="uk-form-label uk-text-large main-text" for="username">Email</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-form-large " id="email" type="text" placeholder="Username" name="username" required autofocus>
+                            </div>
+                        </div>
+    
+                         <!-- PASSWORD -->
+                         <div class="mb-3">
+                            <label class="uk-form-label uk-text-large main-text" for="password">Password</label>
+                            <div class="uk-form-controls">
+                                <input class="uk-form-large " id="password" type="password" placeholder="Password" name="password" required>
+                            </div>
+                        </div>
+    
+                    </div>
+
+                    <!-- LOGIN AND CANCEL -->
+                    <div class="text-center mt-4">
+                        <button class="uk-button uk-button-primary main-text" type="submit" id="sendButton"><span uk-icon="sign-in"></span> Login</button>
+                        <a class="uk-button uk-button-danger main-text" href="/"><span class="uk-margin-small-right" uk-icon="close"></span> Cancel</a>
+                    </div>  
+    
+                  </form> 
+                  <!-- END SECTION : FORM  -->
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- Login Modal -->

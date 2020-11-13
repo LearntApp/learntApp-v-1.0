@@ -1,0 +1,26 @@
+/* CUSTOM CSS GOES HERE */
+
+/* Font-related CSS */
+#logo-text{
+    font-family: 'Poppins' !important;
+    font-weight: 700 !important;
+}
+
+.nav-link{
+    font-family: 'Poppins' !important;  
+    font-weight: 600 !important;
+}
+
+.header-text{
+    font-family: 'Poppins' !important;  
+    font-weight: 700 !important;
+}
+
+.main-text{
+    font-family: 'Poppins' !important;  
+    font-weight: 600 !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+}

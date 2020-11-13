@@ -1,0 +1,226 @@
+<%- include ../partials/header.ejs %>  
+
+<%- include ../partials/main_nav.ejs %>  
+
+<main>
+    <div class="uk-container my-5">
+        <h1 class="main-text text-center">Become a Tutor</h1>
+
+
+              <!-- MESSAGE AREA -->
+            
+
+            <!-- //   <img src="/Assets/images/Logo1.png" alt="" class="mx-auto d-block" style="height: 80px; width: 80px;"> -->
+
+  
+               
+
+
+
+		<div  uk-grid class="uk-child-width-expand@s ">
+			<div class="uk-width-1-4 uk-visible@l" uk-sticky="offset: 160" class="uk-sticky uk-sticky-below uk-sticky-fixed" style="position: fixed; top: 160px; width: 200px;">
+		        <div class="uk-card uk-card-default uk-card-body" >
+		        	 <ul class="uk-nav uk-nav-default main-text" uk-scrollspy-nav="closest: li; scroll: true">
+				        <li class="uk-nav-header mt-4">Navigation</li>
+				        <li><a href="#genInfo" uk-scroll>General Information</a></li>
+				        <li><a href="#servProv" uk-scroll>Services Provided</a></li>
+				        <li><a href="#accInfo" uk-scroll>Account Information</a></li>
+				        <li><a href="#profPic" uk-scroll>Profile Picture</a></li>
+				        <li class="uk-nav-divider"></li>
+				        <li><a href="#upload" uk-scroll>Register</a></li>
+				        <li class="uk-nav-divider"></li>
+				        <li><a href="index.html#CentForm">Return to Homepage</a></li>
+				    </ul>
+		        </div>
+		    </div>
+
+		    <div class="uk-width-3-4">
+				<form class="uk-form-stacked uk-margin-small" method="post">
+
+                    <div id="genInfo" class="uk-card uk-card-default uk-card-body mb-3"  uk-scrollspy="cls:uk-animation-fade; repeat: true">
+			        	<h2 class="main-text">General Information</h2>
+			        	
+					    <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="firstName">First Name</label>
+					        <div class="uk-form-controls">
+					            <input class="uk-input uk-form-large" id="firstName" name="firstName" type="text" placeholder="John / Jane" required>
+					        </div>
+                        </div>
+                        
+                        <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="txtcourseName">Last Name</label>
+					        <div class="uk-form-controls">
+					            <input class="uk-input uk-form-large" id="lastName" name="lastName" type="text" placeholder="Doe" required>
+					        </div>
+                        </div>
+                        
+                        <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="phoneNumber">Phone Number</label>
+					        <div class="uk-form-controls">
+					            <input class="uk-input uk-form-large" id="phoneNumber" name="phoneNumber" type="tel" placeholder="123 456 7899">
+					        </div>
+                        </div>
+
+                        <div class="uk-margin">
+					        <div class="uk-form-label uk-text-large main-text">Personal Background and Resume:</div>
+					        <textarea class="uk-textarea uk-form-large" id="background" name="background" rows="8"></textarea>
+                        </div> 
+                        
+                    </div>
+                    
+                    <div id="servProv" class="uk-card uk-card-default uk-card-body mb-3"  uk-scrollspy="cls:uk-animation-fade; repeat: true">
+			        	<h2 class="main-text">Services Provided</h2>
+                        
+                        <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="subject">Subject</label>
+					        <div class="uk-form-controls">
+					            <select class="uk-select uk-form-large" id="subject" name="subject">
+					            	<option hidden disabled selected value> -- Select an Option -- </option>
+					                <option value="PE">PE</option>
+					                <option value="Math">Math</option>
+                                    <option value="French">French</option>
+                                    <option value="ESL">ESL</option>
+                                    <option value="Coding">Coding</option>
+                                    <option value="Music">Music</option>
+                                    <option value="Art">Art</option>
+                                    <option value="Science">Science</option>
+					            </select>
+					        </div>
+					    </div>
+
+					    <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="responseTime">Response Time</label>
+					        <div class="uk-form-controls">
+					            <select class="uk-select uk-form-large" id="responseTime" name="responseTime">
+					            	<option hidden disabled selected value> -- Select an Option -- </option>
+					                <option value="6">Less than 6 Hours</option>
+					                <option value="12">Less than 12 Hours</option>
+					                <option value="24/Summer">24 Hours or More</option>
+					            </select>
+					        </div>
+                        </div>
+                        
+                        <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="rate">Hourly Rate</label>
+					        <div class="uk-form-controls">
+					            <input class="uk-input uk-form-large" id="rate" name="rate" type="number" min="0" max="70" step="0.01" placeholder="$15 per hour">
+					        </div>
+					    </div>
+
+                        <div class="uk-margin">
+					        <div class="uk-form-label uk-text-large main-text"> Location</div>
+					        <div class="uk-form-controls uk-form-controls-text">
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="times" value="Online"> Online</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="times" value="Offline"> Offline</label>
+					        </div>
+					    </div>
+
+                        <div class="uk-margin">
+					        <div class="uk-form-label uk-text-large main-text">Preferred Days</div>
+					        <div class="uk-form-controls uk-form-controls-text">
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="times" value="Monday"> Monday</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Tuesday"> Tuesday</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Wednesday"> Wednesday</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Thursday"> Thursday</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Friday"> Friday</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Saturday"> Saturday</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Sunday"> Sunday</label>
+					        </div>
+                        </div>
+                        
+                        <div class="uk-margin">
+					        <div class="uk-form-label uk-text-large main-text">Preferred Hours</div>
+					        <div class="uk-form-controls uk-form-controls-text">
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Morning"> Morning</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Afternoon"> Afternoon</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Evening"> Evening</label>
+					        </div>
+                        </div>
+                        
+                        <div class="uk-margin">
+					        <div class="uk-form-label uk-text-large main-text">Levels</div>
+					        <div class="uk-form-controls uk-form-controls-text">
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="Tertiary"> College Level and Above</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="highSec"> High School</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="lowSec"> Junior High</label>
+                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="elementary"> Elementary</label>
+					        </div>
+                        </div>
+                        
+                        <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="banner">Profile Banner</label>
+					        <div class="uk-form-controls">
+					            <input class="uk-input uk-form-large" id="banner" name="banner" type="text" placeholder="I specialize in teaching...">
+					        </div>
+                        </div>
+
+                        <div class="uk-margin">
+					        <div class="uk-form-label uk-text-large main-text">Your Teaching Methodology:</div>
+					        <textarea class="uk-textarea uk-form-large" id="methodology" name="methodology" rows="8"></textarea>
+					    </div> 
+			    	</div>
+
+			        <div id="accInfo" class="uk-card uk-card-default uk-card-body mb-3"  uk-scrollspy="cls:uk-animation-fade; repeat: true">
+			        	<h2 class="main-text">Account Information</h2>
+			        	
+					    <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="email">Email</label>
+					        <div class="uk-form-controls">
+					            <input class="uk-input uk-form-large" id="email" name="email"  required type="email" required placeholder="user@server.com">
+					        </div>
+					    </div>
+
+					    <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="password">Password</label>
+					        <div class="uk-form-controls">
+					            <input class="uk-input uk-form-large" id="password" name="password" required type="password" placeholder="pass_word">
+					        </div>
+					    </div>
+
+                        <div class="uk-margin">
+					        <label class="uk-form-label uk-text-large main-text" for="conPass">Confirm Password</label>
+					        <div class="uk-form-controls">
+					            <input class="uk-input uk-form-large" id="conPass" name="conPass" required type="password" placeholder="Must be the same as password">
+					        </div>
+					    </div>
+                    </div>	 
+                    
+                    <div id="profPic" class="uk-card uk-card-default uk-card-body mb-3"  uk-scrollspy="cls:uk-animation-fade; repeat: true">
+			        	<h2 class="main-text">Profile Picture</h2>
+			        	
+					    <div class="uk-margin">
+                            <div uk-form-custom>
+                                <input type="file" accept="image/*">
+                                <button class="uk-button uk-button-default uk-button-large main-text" type="button" tabindex="-1" name="photo" id="photo">Choose Your Best Photo</button>
+                            </div>
+                        </div>
+			    	</div>
+
+			    	<div id="upload" class="uk-card uk-card-default uk-card-body mb-5" uk-scrollspy="cls:uk-animation-fade; repeat: true">
+			        	<h2 class="main-text">You're Almost Done!</h2>
+			        	
+					    <div class="uk-margin">
+					        <button class="uk-button uk-button-primary uk-button-large main-text" type="submit" name="submit" value="Upload Questionnaire">
+					        	<span uk-icon="upload"></span>&nbsp;Register
+					    	</button>
+					    	<button class="uk-button uk-button-secondary uk-button-large main-text" type="reset" name="reset" value="Start Again">
+					    		<span uk-icon="file-edit"></span>&nbsp;Start Again
+					    	</button>
+					        <!-- <input class="uk-button uk-button-default" type="reset" name="btnReset" value="Start Again"> -->
+					    </div>
+			    	</div>
+
+		    	</form>
+		    </div>
+
+		</div>
+	</main>
+        
+    </div>
+
+    <%- include ../auth/login-modal.ejs %>   
+</main>
+
+<%- include ../partials/bottom_nav.ejs %>      
+
+<%- include ../partials/footer.ejs %>   
