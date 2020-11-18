@@ -1,34 +1,94 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+// THIRD PARTY MODULES
+//////////////////////////////////////////////////////////////////////////////////////////
+require('dotenv').config();
 var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
+const express = require('express');
+let path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const logger = require('morgan');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const flash = require('connect-flash');
+const passport = require('passport');
 
-var indexRouter = require('../routes/index');
-var usersRouter = require('../routes/users');
+// Initialize app with express
+const app = express();
+console.log('App Started...');
 
-var app = express();
 
-// view engine setup
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// CONFIGURATIONS
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// DB Config
+const DB = process.env.MONGO_URI;
+// Connect to Mongo
+mongoose.connect(DB, {useNewUrlParser: true, useUnifiedTopology: true});
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'DB Connection Error: '));
+mongoDB.once('open', ()=>{
+  console.log('Connected to MongoDB...');
+});
+
+// Passport config
+//require('./config/passport')(passport);
+
+// EJS Config
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// MIDDLEWARE
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// Body parser
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../../public')));
-app.use(express.static(path.join(__dirname, '../../node_modules')));
+app.use(express.static(path.join(__dirname, '../../node_modules'))); // added to predetermine the path for libraries used inside node modules
+app.use(express.static(path.join(__dirname, '../../public'))); // added to predetermine the path for libraries used inside node modules
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// Express session
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// Passport middleware - must be AFTER express session
+//app.use(passport.initialize());
+//app.use(passport.session());
+
+// Connect flash
+app.use(flash());
+
+// Global variables
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+// Routes
+app.use('/', require('../routes/index'));
+app.use('/users', require('../routes/users'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// ERROR HANDLER
+//////////////////////////////////////////////////////////////////////////////////////////
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -36,7 +96,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error', { title: 'Error' });
+  res.render('error');
 });
 
 module.exports = app;
