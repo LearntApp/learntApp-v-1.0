@@ -17,10 +17,10 @@ module.exports = {
     },
 
     displayTutorRegistrationPage: (req, res, next) => {
-        res.render('tutors/regTutor', { title: 'Sign up to be a tutor'});
+        res.render('tutors/regTutor', { title: 'Sign up to be a Tutor'});
     },
 
     displayStudentRegistrationPage: (req, res, next) => {
-        res.render('auth/regStudent', { title: 'Sign up to be a tutor'});
+        res.render('auth/regStudent', { title: 'Sign up to be a Student'});
     }
 }
