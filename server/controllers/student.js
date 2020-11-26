@@ -92,14 +92,14 @@ module.exports = {
 
     // Login handle
     processUserLogin: (req, res, next) => {
-        passport.authenticate('local', (err, user, info) => {
+        passport.authenticate('local', (err, user) => {
             //server error
             if (err){
                 return next(err);
             }
             // is there a user login error?
             if (!user) {
-                req.flash('loginMessage', 'Authentication Error');
+                req.flash('error_msg', 'Authentication Error');
                 return res.redirect('/login');
             }
             req.login(user, (err) => {
@@ -107,6 +107,7 @@ module.exports = {
                 if(err) {
                     return next(err);
                 }
+                req.flash('success_msg', 'Log in successfully!');
                 return res.redirect('/');
             });
         })(req, res, next);
