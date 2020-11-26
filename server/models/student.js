@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const StudentSchema = new mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
         trim: true,
         required: true,
@@ -22,10 +22,9 @@ const StudentSchema = new mongoose.Schema({
     password: {
         type: String,
         trim: true,
-        required: true,
-        lowercase: true
+        required: true
     },
-    phoneNumber: {
+    phone: {
         type: Number,
         trim: true,
         required: true
@@ -43,6 +42,9 @@ const StudentSchema = new mongoose.Schema({
     profilePicture: {
 
     }
+}, 
+{
+    collections: "students"
 });
 
 const Student = mongoose.model('Student', StudentSchema);

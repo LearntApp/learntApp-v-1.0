@@ -1,5 +1,8 @@
  <!-- asdfasdfadfasdfds -->
   <main uk-scrollspy="target: > div.animated; cls: uk-animation-slide-bottom-medium; delay: 100; repeat: true">
+
+    <%- include partials/messages.ejs %>
+    
     <video src="/Assets/Videos/Landing2.mp4" loop muted uk-video="autoplay: inview" class="uk-card-hover"></video>
     <div class="uk-overlay uk-light uk-position-center text-center">
         <h1 class="my-0 header-text">Find</h1>
@@ -188,9 +191,6 @@
     </div>
 
     <div class="animated">
-      <a class="uk-button uk-button-primary uk-button-large d-block w-25 mx-auto header-text uk-text-large uk-text-capitalize text-white mb-5 py-3 uk-border-pill">See more teachers</a>
+      <a class="uk-button uk-button-primary uk-button-large d-block w-25 mx-auto header-text uk-text-large uk-text-capitalize text-white mb-5 py-3 uk-border-pill" href="/list">See more teachers</a>
     </div>
-
-    <%- include student/login-modal.ejs %> 
-
-  </main>
+</main>

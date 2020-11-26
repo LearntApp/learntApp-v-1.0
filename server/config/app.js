@@ -34,7 +34,7 @@ mongoDB.once('open', ()=>{
 });
 
 // Passport config
-//require('./config/passport')(passport);
+require('./passport')(passport);
 
 // EJS Config
 app.use(expressLayouts);
@@ -63,8 +63,8 @@ app.use(session({
 }));
 
 // Passport middleware - must be AFTER express session
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Connect flash
 app.use(flash());
