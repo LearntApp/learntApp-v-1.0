@@ -19,11 +19,9 @@ router.get('/about', indexController.displayAboutPage);
 router.get('/list', indexController.displayListPage);
 
 /* GET tutorSignUp page. */
-
 router.get('/TutorRegistration', indexController.displayTutorRegistrationPage);
 
 /* GET studentSignUp page. */
-
 router.get('/StudentRegistration', indexController.displayStudentRegistrationPage);
 
 module.exports = router;

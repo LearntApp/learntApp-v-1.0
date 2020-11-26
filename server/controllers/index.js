@@ -13,14 +13,14 @@ module.exports = {
     },
 
     displayListPage: (req, res, next) => {
-        res.render('tutors/list', { title: 'Find a Tutor'});
+        res.render('tutor/list', { title: 'Find a Tutor'});
     },
 
     displayTutorRegistrationPage: (req, res, next) => {
-        res.render('tutors/regTutor', { title: 'Sign up to be a Tutor'});
+        res.render('tutor/regTutor', { title: 'Sign up to be a Tutor'});
     },
 
     displayStudentRegistrationPage: (req, res, next) => {
-        res.render('auth/regStudent', { title: 'Sign up to be a Student'});
+        res.render('student/regStudent', { title: 'Sign up to be a Student'});
     }
 }

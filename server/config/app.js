@@ -4,6 +4,7 @@
 require('dotenv').config();
 var createError = require('http-errors');
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
 let path = require('path');
 var cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -36,6 +37,7 @@ mongoDB.once('open', ()=>{
 //require('./config/passport')(passport);
 
 // EJS Config
+app.use(expressLayouts);
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
