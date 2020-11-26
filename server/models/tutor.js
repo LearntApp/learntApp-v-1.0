@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const TutorSchema = new mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
         trim: true,
         required: true,
@@ -22,10 +22,9 @@ const TutorSchema = new mongoose.Schema({
     password: {
         type: String,
         trim: true,
-        required: true,
-        lowercase: true
+        required: true
     },
-    phoneNumber: {
+    phone: {
         type: Number,
         trim: true,
         required: true
@@ -37,7 +36,7 @@ const TutorSchema = new mongoose.Schema({
     userType: {
         type: String,
         trim: true,
-        default: 'student',
+        default: 'tutor',
         lowercase: true
     },
     background: {
@@ -95,6 +94,9 @@ const TutorSchema = new mongoose.Schema({
     profilePicture: {
 
     }
+}, 
+{
+    collections: "tutors"
 });
 
 const Tutor = mongoose.model('Tutor', TutorSchema);

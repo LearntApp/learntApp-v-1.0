@@ -4,6 +4,7 @@
 require('dotenv').config();
 var createError = require('http-errors');
 const express = require('express');
+const expressLayouts = require('express-ejs-layouts');
 let path = require('path');
 var cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -33,9 +34,10 @@ mongoDB.once('open', ()=>{
 });
 
 // Passport config
-//require('./config/passport')(passport);
+require('./passport')(passport);
 
 // EJS Config
+app.use(expressLayouts);
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
@@ -61,8 +63,8 @@ app.use(session({
 }));
 
 // Passport middleware - must be AFTER express session
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Connect flash
 app.use(flash());

@@ -1,0 +1,64 @@
+<main uk-scrollspy="target: > div.animated; cls: uk-animation-slide-bottom-medium; delay: 100; repeat: true">
+    <div class="uk-container my-5 animated">
+        <h1 class="main-text text-center">Become a Student</h1>
+        <h3 class="main-text text-center">and gain access to thousands of teachers</h3>
+        
+        <!-- MESSAGE AREA -->
+        <%- include ../partials/messages.ejs %>
+
+        <!-- BEGIN SECTION : FORM  -->
+        <form class="uk-form-horizontal my-5 w-50 d-block mx-auto" method="POST" autocomplete="off">
+
+            <div >
+                <!-- FIRSTNAME -->
+                <div class="mb-3">
+                    <label class="uk-form-label uk-text-large" for="firstName">First Name</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-form-large " id="firstName" type="text" placeholder="John / Jane" name="firstName" required autofocus>
+                    </div>
+                </div>
+
+                <!-- LASTNAME -->
+                <div class="mb-3">
+                    <label class="uk-form-label uk-text-large" for="lastName">Last Name</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-form-large " id="lastName" type="text" placeholder="Doe" name="lastName" required autofocus>
+                    </div>
+                </div>
+
+                <!-- EMAIL -->
+                <div class="mb-3">
+                    <label class="uk-form-label uk-text-large" for="email">Email</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-form-large " id="email" type="email" placeholder="example@service.com" name="email" required>
+                    </div>
+                </div>
+
+                <!-- PASSWORD -->
+                <div class="mb-3">
+                    <label class="uk-form-label uk-text-large" for="password">Password</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-form-large " id="password" type="password" placeholder="Password" name="password" required>
+                    </div>
+                </div>
+
+                <!-- TELEPHONE -->
+                <div class="mb-3">
+                    <label class="uk-form-label uk-text-large" for="phone">Phone Number</label>
+                    <div class="uk-form-controls">
+                        <input class="uk-form-large " id="phone" type="tel" placeholder="123 456 7899" name="phone" required>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- REGISTER AND CANCEL -->
+            <div class="text-center mt-4">
+                <button class="uk-button uk-button-primary main-text" type="submit" id="sendButton"><span uk-icon="sign-in"></span> Register</button>
+                <a class="uk-button uk-button-danger main-text" href="/"><span class="uk-margin-small-right" uk-icon="close"></span> Cancel</a>
+            </div>  
+
+        </form> 
+        <!-- END SECTION : FORM  -->
+    </div>
+</main> 

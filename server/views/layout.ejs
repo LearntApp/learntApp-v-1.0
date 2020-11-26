@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- CSS -->
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <!-- UIKIT CSS -->
+    <link rel="stylesheet" href="/uikit/dist/css/uikit.min.css">
+    <!-- Fontawesome Link -->
+    <link rel="stylesheet" href="/@fortawesome/fontawesome-free/css/all.min.css">
+     <!-- Custom CSS -->
+     <link rel="stylesheet" href="/Content/app.css" /> 
+     <!-- Favicon LINK -->
+     <link rel="icon" href="/Assets/images/favicon.ico" type="image/png">
+     <!-- Google Fonts Link -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;0,700;1,200;1,400&display=swap" rel="stylesheet">
+  </head>
+
+    <%- include('./partials/main_nav.ejs') %>      
+
+    <body>
+        <div class="container">
+            <%- body %>
+        </div>
+
+        <footer uk-scrollspy="target: > div.animated; cls: uk-animation-slide-bottom-medium; delay: 100; repeat: true">
+            <div class="bg-dark py-5 animated">
+                <div class="uk-container text-white"> 
+                <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
+
+                    <div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                        <a class="nav-link text-white" href="/about">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Terms &amp; Conditions</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                    </div>
+
+                    <div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                        <a class="nav-link text-white disabled" href="#">Account</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-white" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-white" href="/list">Find a Tutor</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-white" href="/TutorRegistration">Be a Tutor</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link text-white" href="/StudentRegistration">Be a Student</a>
+                        </li>
+                    </ul>
+                    </div>
+
+
+                    <div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                        <a class="nav-link text-white disabled" href="#">Follow Us</a>
+                        </li>
+                        <li class="nav-item">
+                        <span>
+                            <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
+                            <a href="#" class="uk-icon-button  uk-margin-small-right" uk-icon="facebook"></a>
+                            <a href="#" class="uk-icon-button" uk-icon="google-plus"></a>
+                        </span>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+
+                <p class="main-text text-center">&copy; Copyright <%= new Date().getFullYear();%> All Rights Reserved</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- SCRIPTS -->
+        <!-- JQUERY -->
+        <script src="/jquery/dist/jquery.min.js"></script>
+        <!-- BOOTSTRAP -->
+        <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- UIKIT -->
+        <script src="/uikit/dist/js/uikit.min.js"></script>
+        <script src="/uikit/dist/js/uikit-icons.min.js"></script>
+        <!-- CUSTOM JS -->
+        <script src="/Scripts/app.js"></script>
+    </body>
+</html>
