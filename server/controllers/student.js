@@ -118,5 +118,10 @@ module.exports = {
         req.logOut();
         req.flash('success_msg', 'Logout successfully');
         res.redirect('/login');
+    },
+
+    displayStudentDashboardPage: (req, res, next) => {
+        res.render('student/studentDashboard', { title: 'Update Your Details', displayName: req.user ? req.user.firstName : ''});
     }
+
 }

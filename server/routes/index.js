@@ -43,4 +43,7 @@ router.post('/login', studentController.processUserLogin);
 /* GET studentSignUp page. */
 router.get('/logout', studentController.performLogout);
 
+/* GET studentDashBoard page. */
+router.get('/StudentDashboard', studentController.displayStudentDashboardPage);
+
 module.exports = router;
