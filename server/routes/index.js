@@ -46,4 +46,7 @@ router.get('/logout', studentController.performLogout);
 /* GET studentDashBoard page. */
 router.get('/StudentDashboard', studentController.displayStudentDashboardPage);
 
+/* GET tutorDashBoard page. */
+router.get('/TutorDashboard', studentController.displayTutorDashboardPage);
+
 module.exports = router;

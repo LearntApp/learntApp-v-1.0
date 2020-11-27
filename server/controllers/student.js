@@ -122,6 +122,10 @@ module.exports = {
 
     displayStudentDashboardPage: (req, res, next) => {
         res.render('student/studentDashboard', { title: 'Update Your Details', displayName: req.user ? req.user.firstName : ''});
+    },
+
+    displayTutorDashboardPage: (req, res, next) => {
+        res.render('tutor/tutorDashboard', { title: 'Update Your Details', displayName: req.user ? req.user.firstName : ''});
     }
 
 }
