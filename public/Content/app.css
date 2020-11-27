@@ -19,6 +19,10 @@ hr {
     
 }
 
+#aboutSubt {
+    text-transform: uppercase;
+}
+
 #copyright {
     margin-top: 40px;
 }
