@@ -4,6 +4,7 @@
 :root {
     --background-color: #f7f7f7;
     --logo-color:#71D6A3;
+    --logo-hover: #0f6ecd;
     --regular-text-color: #222831;
 }
 
@@ -29,8 +30,12 @@ hr {
     font-size: 1.5625em;
     font-weight: bold;
     line-height: 1.2;
+    padding: 8px;
     text-transform: capitalize;
-    
+}
+
+#seeMoreButton:hover {
+    background-color: var(--logo-hover);
 }
 
 /* Font-related CSS */
