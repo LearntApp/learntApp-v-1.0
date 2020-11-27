@@ -1,5 +1,49 @@
 /* CUSTOM CSS GOES HERE */
 
+/* CSS Variable declarations */
+:root {
+    --background-color: #f7f7f7;
+    --logo-color:#71D6A3;
+    --logo-hover: #0f6ecd;
+    --regular-text-color: #222831;
+    --oposite-text-color: #f7f7f7;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Poppins', sans-serif !important;
+
+}
+
+hr {
+    border-color: #282C31;
+    
+}
+
+#aboutSubt {
+    text-transform: uppercase;
+}
+
+#copyright {
+    color: var(--oposite-text-color);
+    margin-top: 40px;
+}
+
+#seeMoreButton {
+    background-color: var(--logo-color);
+    color: #FFFFFF;
+    display: block;
+    font-size: 1.5625em;
+    font-weight: bold;
+    line-height: 1.2;
+    padding: 8px;
+    text-transform: capitalize;
+}
+
+#seeMoreButton:hover {
+    background-color: var(--logo-hover);
+}
+
 /* Font-related CSS */
 #logo-text{
     font-family: 'Poppins' !important;
@@ -9,6 +53,7 @@
 .nav-link{
     font-family: 'Poppins' !important;  
     font-weight: 600 !important;
+    color: var(--oposite-text-color);
 }
 
 .header-text{
@@ -21,6 +66,8 @@
     font-weight: 600 !important;
 }
 
-body {
-    font-family: 'Poppins', sans-serif !important;
+/* Icons */
+.twitter, .facebook, .instagram {
+    color: var(--logo-color);
+    margin-right: 0.3125em;
 }
