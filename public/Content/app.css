@@ -59,6 +59,7 @@ hr {
 .header-text{
     font-family: 'Poppins' !important;  
     font-weight: 700 !important;
+    position: static;
 }
 
 .main-text{
