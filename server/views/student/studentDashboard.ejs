@@ -2,6 +2,13 @@
     <div class="uk-container my-5 animated">
         <h1 class="main-text text-center">Your Account Details</h1>
         
+        <!-- STUDENT FORM GOES IN BETWEEN -->
+        <% if(user.userType == "student") { %> 
+        <% } %> 
+
+        <!-- TUTOR FORM GOES IN BETWEEN -->
+        <% if(user.userType == "tutor") { %> 
+        <% } %> 
         
         <!-- BEGIN SECTION : FORM  -->
         <form class="uk-form-horizontal my-5 w-75 d-block mx-auto" method="POST" autocomplete="off">
