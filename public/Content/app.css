@@ -1,5 +1,12 @@
 /* CUSTOM CSS GOES HERE */
 
+/* CSS Variables */
+:root {
+    --background-color: #EEEEEE;
+    --logo-color: #81F2B9;
+    --regular-text-color: #222831;
+}
+
 /* Font-related CSS */
 #logo-text{
     font-family: 'Poppins' !important;
@@ -23,4 +30,10 @@
 
 body {
     font-family: 'Poppins', sans-serif !important;
+}
+
+/* Icons */
+.twitter, .facebook, .instagram {
+    color: var(--logo-color);
+    margin-right: 0.3125em;
 }
