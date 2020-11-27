@@ -6,6 +6,7 @@
     --logo-color:#71D6A3;
     --logo-hover: #0f6ecd;
     --regular-text-color: #222831;
+    --oposite-text-color: #f7f7f7;
 }
 
 body {
@@ -24,6 +25,7 @@ hr {
 }
 
 #copyright {
+    color: var(--oposite-text-color);
     margin-top: 40px;
 }
 
@@ -51,6 +53,7 @@ hr {
 .nav-link{
     font-family: 'Poppins' !important;  
     font-weight: 600 !important;
+    color: var(--oposite-text-color);
 }
 
 .header-text{
