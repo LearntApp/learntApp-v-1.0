@@ -21,6 +21,6 @@ module.exports = {
     },
 
     displayStudentRegistrationPage: (req, res, next) => {
-        res.render('auth/regStudent', { title: 'Sign up to be a tutor'});
+        res.render('auth/regStudent', { title: 'Sign up to be a student'});
     }
 }
