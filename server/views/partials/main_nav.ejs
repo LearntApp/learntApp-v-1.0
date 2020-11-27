@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark "> 
-      <a class="navbar-brand" href="#" id="logo-text"><img src="/Assets/images/Logo1.jpeg" alt="" style="height: 57px; width: 210px;"></a>
+      <a class="navbar-brand" href="/" id="logo-text"><img src="/Assets/images/Logo1.jpeg" alt="" style="height: 57px; width: 210px;"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -32,28 +32,14 @@
             <a class="nav-link" href="/list">Find a Tutor</a>
           </li>
 
-          <% if(title == "Sign up to be a Tutor") { %> 
-          <li class="nav-item active">
-          <% } else { %>
-          <li class="nav-item">
-          <% } %>
-            <a class="nav-link" href="/TutorRegistration">Be a Tutor</a>
-          </li>
-
-          <% if(title == "Sign up to be a Student") { %> 
-          <li class="nav-item active">
-          <% } else { %>
-          <li class="nav-item">
-          <% } %>
-            <a class="nav-link" href="/StudentRegistration">Be a Student</a>
-          </li>
-
           <!-- LOGIN AND LOGOUT DISPLAY ON NAV BAR -->
-
           <% if(typeof displayName == 'string' && displayName) { %>
-            <li class="navbar-text active"><i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %></li>
-            <li class="nav-item active"><a href="/logout" class="nav-link"><i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+            <li class="nav-item"><a href="/dashboard" class="nav-link"><i class="fas fa-lg fa-sign-out-alt"></i> Profile</a></li>
+            <li class="nav-item"><a class="nav-link">/</a></li>
+            <li class="nav-item"><a href="/logout" class="nav-link"><i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
           <% } else { %>
+            <li class="nav-item"><a href="/registration" class="nav-link">Register</a></li>
+            <li class="nav-item"><a class="nav-link">/</a></li>
             <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
           <% } %>
         </ul>

@@ -5,7 +5,7 @@ const passport = require('passport');
 
 
 // Create Student schema instance
-const Student = require('../models/student');
+const User = require('../models/user');
 const { Passport } = require('passport');
 
 
@@ -13,12 +13,12 @@ const { Passport } = require('passport');
 module.exports = {
 
     // GET student registration page
-    displayStudentRegistrationPage: (req, res, next) => {
-        res.render('student/regStudent', { title: 'Sign up to be a Student', displayName: req.user ? req.user.firstName : ''});
+    displayUserRegistrationPage: (req, res, next) => {
+        res.render('user/registration', { title: 'Sign up to be a Student', displayName: req.user ? req.user.firstName : ''});
     },
 
     // POST student registration page - HANDLE student registration
-    processStudentRegistration: (req, res) => {
+    processUserRegistration: (req, res) => {
         // grab form inputs
         const { firstName, lastName, email, password, phone } = req.body;
         let formErrors = [];
@@ -35,7 +35,7 @@ module.exports = {
 
         // check errors
         if (formErrors.length > 0) {
-            res.render('student/regStudent', {
+            res.render('user/registration', {
                 title: 'Sign up to be a Student',
                 formErrors,
                 firstName,
@@ -46,14 +46,14 @@ module.exports = {
             });
         } else {
             // validation passed
-            Student.findOne({ email: email })
+            User.findOne({ email: email })
             .then(user => {
                 // if user already exists
                 formErrors.push({  msg: 'Email is already registered' });
                 // if user = false (user is false because the search (User.findOne) was not successfully) - user doesn't exist on DB
                 if (user) {
                     // render errors and failed to register user
-                    res.render('student/regStudent', {
+                    res.render('user/registration', {
                         title: 'Sign up to be a Student',
                         formErrors,
                         firstName,
@@ -63,7 +63,7 @@ module.exports = {
                         phone
                     });
                 } else {
-                    const newStudent = new Student({
+                    const newUser = new User({
                         firstName,
                         lastName,
                         email,
@@ -72,15 +72,15 @@ module.exports = {
                     });
 
                     // Hash password
-                    bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newStudent.password, salt, (err, hash) => {
+                    bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
                         if(err) throw err;
                         // set password to hashed
-                        newStudent.password = hash;
+                        newUser.password = hash;
                         // save user
-                        newStudent.save()
+                        newUser.save()
                         .then(user => {
                             req.flash('success_msg', 'You are now registered and can log in')
-                            res.redirect('/');
+                            res.redirect('/login');
                         })
                         .catch(err => console.log(err));
                     }));
@@ -107,8 +107,8 @@ module.exports = {
                 if(err) {
                     return next(err);
                 }
-                req.flash('success_msg', 'Log in successfully!');
-                return res.redirect('/');
+                req.flash('success_msg', 'Logged in successfully!');
+                return res.redirect('/dashboard');
             });
         })(req, res, next);
     },
@@ -120,12 +120,7 @@ module.exports = {
         res.redirect('/login');
     },
 
-    displayStudentDashboardPage: (req, res, next) => {
-        res.render('student/studentDashboard', { title: 'Update Your Details', displayName: req.user ? req.user.firstName : ''});
-    },
-
-    displayTutorDashboardPage: (req, res, next) => {
-        res.render('tutor/tutorDashboard', { title: 'Update Your Details', displayName: req.user ? req.user.firstName : ''});
+    displayUserDashboardPage: (req, res, next) => {
+        res.render('user/dashboard', { title: 'Update Your Details', displayName: req.user ? req.user.firstName : ''});
     }
-
 }

@@ -5,7 +5,7 @@ var router = express.Router();
 let indexController = require('../controllers/index');
 
 // Import the student controllers
-let studentController = require('../controllers/student');
+let userController = require('../controllers/user');
 
 // Import authentication controller
 let { ensureAuthentication } = require('../config/auth');
@@ -32,21 +32,18 @@ router.get('/login', indexController.displayLoginPage);
 
 // STUDENT CONTROLLERS
 /* GET studentSignUp page. */
-router.get('/StudentRegistration', studentController.displayStudentRegistrationPage);
+router.get('/registration', userController.displayUserRegistrationPage);
 
 // POST student registration page - HANDLE student registration
-router.post('/StudentRegistration', studentController.processStudentRegistration);
+router.post('/registration', userController.processUserRegistration);
 
 // POST student login page - HANDLE student login
-router.post('/login', studentController.processUserLogin);
+router.post('/login', userController.processUserLogin);
 
 /* GET studentSignUp page. */
-router.get('/logout', studentController.performLogout);
+router.get('/logout', userController.performLogout);
 
 /* GET studentDashBoard page. */
-router.get('/StudentDashboard', studentController.displayStudentDashboardPage);
-
-/* GET tutorDashBoard page. */
-router.get('/TutorDashboard', studentController.displayTutorDashboardPage);
+router.get('/dashboard', ensureAuthentication, userController.displayUserDashboardPage);
 
 module.exports = router;

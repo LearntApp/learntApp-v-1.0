@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs');
 
 
 // Create User schema instance
-const Student = require('../models/student');
+const User = require('../models/user');
 
 module.exports = function(passport) {
     // Start passport
@@ -17,7 +17,7 @@ module.exports = function(passport) {
         // use passport local strategy
         new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
             // Match user
-            Student.findOne({ email: email })
+            User.findOne({ email: email })
             .then(user => {
                 // if user is not found by his email
                 if(!user) {
@@ -45,7 +45,7 @@ module.exports = function(passport) {
     });
 
     passport.deserializeUser((id, done) => {
-        Student.findById(id, (err, user) => {
+        User.findById(id, (err, user) => {
             done(err, user);
         });
     });
