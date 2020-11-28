@@ -26,25 +26,23 @@
     <%- include('./partials/main_nav.ejs') %>      
 
     <body>
-        <div class="container">
-            <%- body %>
-        </div>
-
+        <%- body %>
+        
         <footer uk-scrollspy="target: > div.animated; cls: uk-animation-slide-bottom-medium; delay: 100; repeat: true">
             <div class="bg-dark py-5 animated">
-                <div class="uk-container text-white"> 
+                <div class="uk-container"> 
                 <div class="uk-grid-small uk-child-width-expand@s" uk-grid>
 
                     <div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link text-white" href="/about">About Us</a>
+                        <a class="nav-link" href="/about">About Us</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Terms &amp; Conditions</a>
+                        <a class="nav-link" href="#">Terms &amp; Conditions</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Privacy Policy</a>
+                        <a class="nav-link" href="#">Privacy Policy</a>
                         </li>
                     </ul>
                     </div>
@@ -55,7 +53,7 @@
                         <a class="nav-link text-white" href="/user/dashboard">Account</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-white" href="/list">Find a Tutor</a>
+                        <a class="nav-link" href="/list">Find a Tutor</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/user/registration">Register</a>
@@ -70,20 +68,20 @@
                     <div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link text-white disabled" href="#">Follow Us</a>
+                        <a class="nav-link" href="#">Follow Us</a>
                         </li>
                         <li class="nav-item">
                         <span>
-                            <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
-                            <a href="#" class="uk-icon-button  uk-margin-small-right" uk-icon="facebook"></a>
-                            <a href="#" class="uk-icon-button" uk-icon="google-plus"></a>
+                            <a href="#" class="twitter"><i class="fab fa-twitter-square fa-2x"></i></a>
+                            <a href="#" class="facebook"><i class="fab fa-facebook-square fa-2x"></i></a>
+                            <a href="#" class="instagram"><i class="fab fa-instagram fa-2x"></i></a>
                         </span>
                         </li>
                     </ul>
                     </div>
                 </div>
-
-                <p class="main-text text-center">&copy; Copyright <%= new Date().getFullYear();%> All Rights Reserved</p>
+                <hr>
+                <p id= "copyright" class="main-text text-center">&copy; Copyright <%= new Date().getFullYear();%> All Rights Reserved</p>
                 </div>
             </div>
         </footer>
