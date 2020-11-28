@@ -4,9 +4,9 @@
         <!-- MESSAGE AREA -->
         <%- include ../partials/messages.ejs %>
         
-        <h1 class="main-text text-center">Welcome <%= displayName %>!</h1>
+        <h1 class="main-text text-center">Welcome <%= userPayload.firstName %>!</h1>
 
-        <a class="btn btn-outline-warning btn-lg btn-block" href="">Become a Tutor!</a>
+        <a class="btn btn-outline-warning btn-lg btn-block">Become a Tutor!</a>
 
         <!-- STUDENT UPDATE FORM -->        
         <form class="uk-form-horizontal my-5 w-75 d-block mx-auto" method="POST" autocomplete="off">
@@ -29,7 +29,7 @@
                 <div class="mb-3">
                     <label class="uk-form-label uk-text-large" for="firstName">First Name</label>
                     <div class="uk-form-controls">
-                        <input class="uk-form-large " id="firstName" type="text" name="firstName" required>
+                        <input class="uk-form-large " id="firstName" type="text" name="firstName" value="<%= userPayload.firstName %>" required>
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                 <div class="mb-3">
                     <label class="uk-form-label uk-text-large" for="lastName">Last Name</label>
                     <div class="uk-form-controls">
-                        <input class="uk-form-large " id="lastName" type="text" name="lastName" required>
+                        <input class="uk-form-large " id="lastName" type="text" name="lastName" value="<%= userPayload.lastName %>" required>
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@
                 <div class="mb-3">
                     <label class="uk-form-label uk-text-large" for="email">Email</label>
                     <div class="uk-form-controls">
-                        <input class="uk-form-large " id="email" type="email" name="email" required>
+                        <input class="uk-form-large " id="email" type="email" name="email" value="<%= userPayload.email %>" required>
                     </div>
                 </div>
 
@@ -61,12 +61,12 @@
                 <div class="mb-3">
                     <label class="uk-form-label uk-text-large" for="phone">Phone Number</label>
                     <div class="uk-form-controls">
-                        <input class="uk-form-large " id="phone" type="tel" placeholder="123 456 7899" name="phone" required>
+                        <input class="uk-form-large " id="phone" type="tel" placeholder="123 456 7899" name="phone" value="<%= userPayload.phone %>" required>
                     </div>
                 </div>
 
-                <!-- REGISTER AND CANCEL -->
-                <div class="text-center mt-4">
+                <!-- UPDATE AND CANCEL -->
+                <div class="text-center mt-5">
                     <button class="uk-button uk-button-primary main-text" type="submit" id="sendButton"><span uk-icon="sign-in"></span> Update</button>
                     <button class="uk-button uk-button-danger main-text" type="reset"><span uk-icon="sign-in"></span> Cancel</button>
                 </div>  
@@ -171,8 +171,8 @@
 
                 <!-- UPDATE AND CANCEL -->
                 <div class="text-center mt-5">
-                    <a class="uk-button uk-button-primary main-text" href="" id="sendButton"><span uk-icon="pencil"></span> Update</a>
-                    <a class="uk-button uk-button-danger main-text" href="/StudentDashboard"><span class="uk-margin-small-right" uk-icon="close"></span> Cancel</a>
+                    <button class="uk-button uk-button-primary main-text" type="submit" id="sendButton"><span uk-icon="sign-in"></span> Update</button>
+                    <button class="uk-button uk-button-danger main-text" type="reset"><span uk-icon="sign-in"></span> Cancel</button>
                 </div>  
             </div>
         </form> 

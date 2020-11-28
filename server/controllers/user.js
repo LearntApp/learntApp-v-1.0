@@ -4,20 +4,29 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 
-// Create Student schema instance
+// Create User schema instance
 const User = require('../models/user');
-const { Passport } = require('passport');
 
 
 // INDEX CONTROLLERS
 module.exports = {
 
-    // GET student registration page
-    displayUserRegistrationPage: (req, res, next) => {
-        res.render('user/registration', { title: 'Sign up to be a Student', displayName: req.user ? req.user.firstName : ''});
+    // GET user login page
+    displayLoginPage: (req, res, next) => {
+        res.render('login', { title: 'Login', userPayload: req.user ? req.user : ''});
     },
 
-    // POST student registration page - HANDLE student registration
+    // GET user dashboard
+    displayUserDashboard: (req, res) => {
+        res.render('user/dashboard',{ title: 'User Dashboard', userPayload: req.user ? req.user : '' });
+    },
+
+    // GET user registration page
+    displayUserRegistrationPage: (req, res, next) => {
+        res.render('user/registration', { title: 'Sign up to be a Student', userPayload: req.user ? req.user : ''});
+    },
+
+    // POST user registration page - HANDLE user registration
     processUserRegistration: (req, res) => {
         // grab form inputs
         const { firstName, lastName, email, password, phone } = req.body;
@@ -42,7 +51,8 @@ module.exports = {
                 lastName,
                 email,
                 password,
-                phone
+                phone,
+                userPayload: req.user ? req.user : ''
             });
         } else {
             // validation passed
@@ -60,7 +70,8 @@ module.exports = {
                         lastName,
                         email,
                         password,
-                        phone
+                        phone,
+                        userPayload: req.user ? req.user : ''
                     });
                 } else {
                     const newUser = new User({
@@ -80,7 +91,7 @@ module.exports = {
                         newUser.save()
                         .then(user => {
                             req.flash('success_msg', 'You are now registered and can log in')
-                            res.redirect('/login');
+                            res.redirect('/user/login');
                         })
                         .catch(err => console.log(err));
                     }));
@@ -92,24 +103,11 @@ module.exports = {
 
     // Login handle
     processUserLogin: (req, res, next) => {
-        passport.authenticate('local', (err, user) => {
-            //server error
-            if (err){
-                return next(err);
-            }
-            // is there a user login error?
-            if (!user) {
-                req.flash('error_msg', 'Authentication Error');
-                return res.redirect('/login');
-            }
-            req.login(user, (err) => {
-                // server error?
-                if(err) {
-                    return next(err);
-                }
-                req.flash('success_msg', 'Logged in successfully!');
-                return res.redirect('/dashboard');
-            });
+        passport.authenticate('local', {
+            successRedirect: '/user/dashboard',
+            failureRedirect: '/user/login',
+            failureFlash: true,
+            successFlash: req.flash('success_msg', 'Logged in successfully')
         })(req, res, next);
     },
 
@@ -117,10 +115,6 @@ module.exports = {
     performLogout: (req, res) => {
         req.logOut();
         req.flash('success_msg', 'Logout successfully');
-        res.redirect('/login');
-    },
-
-    displayUserDashboardPage: (req, res, next) => {
-        res.render('user/dashboard', { title: 'Update Your Details', displayName: req.user ? req.user.firstName : ''});
+        res.redirect('/user/login');
     }
 }

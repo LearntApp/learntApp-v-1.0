@@ -4,6 +4,6 @@ module.exports = {
             return next();
         }
         req.flash('error_msg', 'Please login to access this page');
-        res.redirect('login');
+        res.redirect('/user/login');
     }
 }

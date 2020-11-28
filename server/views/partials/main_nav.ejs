@@ -33,14 +33,31 @@
           </li>
 
           <!-- LOGIN AND LOGOUT DISPLAY ON NAV BAR -->
-          <% if(typeof displayName == 'string' && displayName) { %>
-            <li class="nav-item"><a href="/dashboard" class="nav-link"><i class="fas fa-lg fa-sign-out-alt"></i> Profile</a></li>
+          <% if(userPayload) { %>
+            <% if(title == "User Dashboard") { %> 
+              <li class="nav-item active">
+            <% } else { %>
+              <li class="nav-item">
+            <% } %>
+                <a href="/user/dashboard" class="nav-link"><i class="fas fa-lg fa-sign-out-alt"></i> Profile</a></li>
             <li class="nav-item"><a class="nav-link">/</a></li>
-            <li class="nav-item"><a href="/logout" class="nav-link"><i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+            <li class="nav-item"><a href="/user/logout" class="nav-link"><i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
           <% } else { %>
-            <li class="nav-item"><a href="/registration" class="nav-link">Register</a></li>
+            <% if(title == "Sign up to be a Student") { %> 
+              <li class="nav-item active">
+            <% } else { %>
+              <li class="nav-item">
+            <% } %>
+              <a href="/user/registration" class="nav-link">Register</a></li>
+
             <li class="nav-item"><a class="nav-link">/</a></li>
-            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+
+            <% if(title == "Login") { %> 
+              <li class="nav-item active">
+            <% } else { %>
+              <li class="nav-item">
+            <% } %>
+              <a href="/user/login" class="nav-link">Login</a></li>
           <% } %>
         </ul>
       </div>
