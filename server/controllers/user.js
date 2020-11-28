@@ -107,7 +107,7 @@ module.exports = {
             successRedirect: '/user/dashboard',
             failureRedirect: '/user/login',
             failureFlash: true,
-            successFlash: req.flash('success_msg', 'Logged in successfully')
+            //successFlash: req.flash('success_msg', 'Logged in successfully')
         })(req, res, next);
     },
 
