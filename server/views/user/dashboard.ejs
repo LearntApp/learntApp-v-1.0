@@ -6,9 +6,85 @@
         
         <h1 class="main-text text-center">Welcome <%= userPayload.firstName %>!</h1>
 
-        <a class="btn btn-outline-warning btn-lg btn-block">Become a Tutor!</a>
+        
+        <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- STUDENT VIEW -->
+        <% if(userPayload.userType === "student") { %> 
+            
+            <a class="btn btn-outline-warning btn-lg btn-block" href="#">Become a Tutor!</a>
+            
+            <!-- STUDENT UPDATE FORM -->        
+            <form class="uk-form-horizontal my-5 w-75 d-block mx-auto" method="POST" autocomplete="off">
+                    
+                <div class="uk-card uk-card-default uk-card-hover uk-card-body mb-5 text-center">
+                    <img class="uk-border-circle w-50" src="/Assets/images/portrait1.jpg" alt="">
+                    <div class="text-center mt-4">
+                        <div uk-form-custom>
+                            <input type="file" accept="image/*">
+                            <button class="uk-button uk-button-secondary main-text" type="button" tabindex="-1" name="photo" id="photo">Choose Your Best Photo</button>
+                        </div>
+                        <a class="uk-button uk-button-primary main-text" href="" id="sendButton"><span uk-icon="pencil"></span> Update Photo</a>
+                    </div>  
+                </div>
+                    
+                <h1 class="main-text text-center">Your Account Details</h1>
 
-        <!-- STUDENT UPDATE FORM -->        
+                <div class="uk-card uk-card-default uk-card-hover uk-card-body mb-5">
+                    <!-- FIRSTNAME -->
+                    <div class="mb-3">
+                        <label class="uk-form-label uk-text-large" for="firstName">First Name</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-form-large " id="firstName" type="text" name="firstName" value="<%= userPayload.firstName %>" required>
+                        </div>
+                    </div>
+
+                    <!-- LASTNAME -->
+                    <div class="mb-3">
+                        <label class="uk-form-label uk-text-large" for="lastName">Last Name</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-form-large " id="lastName" type="text" name="lastName" value="<%= userPayload.lastName %>" required>
+                        </div>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="mb-3">
+                        <label class="uk-form-label uk-text-large" for="email">Email</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-form-large " id="email" type="email" name="email" value="<%= userPayload.email %>" required>
+                        </div>
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="mb-3">
+                        <label class="uk-form-label uk-text-large" for="password">New Password</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-form-large " id="password" type="password" placeholder="New Password" name="password" required>
+                        </div>
+                    </div>
+
+                    <!-- TELEPHONE -->
+                    <div class="mb-3">
+                        <label class="uk-form-label uk-text-large" for="phone">Phone Number</label>
+                        <div class="uk-form-controls">
+                            <input class="uk-form-large " id="phone" type="tel" placeholder="123 456 7899" name="phone" value="<%= userPayload.phone %>" required>
+                        </div>
+                    </div>
+                    
+                    <!-- UPDATE AND CANCEL -->
+                    <div class="text-center mt-5">
+                        <button class="uk-button uk-button-primary main-text" type="submit" id="sendButton"><span uk-icon="sign-in"></span> Update</button>
+                        <button class="uk-button uk-button-danger main-text" type="reset"><span uk-icon="sign-in"></span> Cancel</button>
+                    </div>  
+                </div>
+                <!-- END SECTION : STUDENT FORM  -->
+            </form>
+        <% } %>
+        
+        <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <!-- TUTOR VIEW -->
+
+        <% if(userPayload.userType === "tutor") { %> 
+            <!-- STUDENT UPDATE FORM -->        
         <form class="uk-form-horizontal my-5 w-75 d-block mx-auto" method="POST" autocomplete="off">
                 
             <div class="uk-card uk-card-default uk-card-hover uk-card-body mb-5 text-center">
@@ -64,7 +140,7 @@
                         <input class="uk-form-large " id="phone" type="tel" placeholder="123 456 7899" name="phone" value="<%= userPayload.phone %>" required>
                     </div>
                 </div>
-
+                
                 <!-- UPDATE AND CANCEL -->
                 <div class="text-center mt-5">
                     <button class="uk-button uk-button-primary main-text" type="submit" id="sendButton"><span uk-icon="sign-in"></span> Update</button>
@@ -72,9 +148,7 @@
                 </div>  
             </div>
             <!-- END SECTION : STUDENT FORM  -->
- 
 
-    
             <!-- TUTOR UPDATE FORM -->
             <h1 class="main-text text-center">Tutor Details</h1>
 
@@ -177,6 +251,11 @@
             </div>
         </form> 
         <!-- END SECTION : TUTOR FORM  -->
+    <% } %>  
+ 
+
+    
+            
         
     </div>
 </main> 
