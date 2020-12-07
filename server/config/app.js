@@ -24,7 +24,7 @@ console.log('App Started...');
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // DB Config
-const DB = "mongodb+srv://santiago:OCIImJVgF3Jb2Ii0@mongodbserver.p6m24.mongodb.net/LEARNT?retryWrites=true&w=majority";
+const DB = process.env.MONGO_URI;
 // Connect to Mongo
 mongoose.connect(DB, {useNewUrlParser: true, useUnifiedTopology: true});
 let mongoDB = mongoose.connection;
@@ -80,6 +80,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/', require('../routes/index'));
 app.use('/user', require('../routes/user'));
+app.use('/tutor', require('../routes/tutor'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

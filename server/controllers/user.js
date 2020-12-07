@@ -1,5 +1,4 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
@@ -18,7 +17,7 @@ module.exports = {
 
     // GET user dashboard
     displayUserDashboard: (req, res) => {
-        res.render('user/dashboard',{ title: 'User Dashboard', userPayload: req.user ? req.user : '' });
+        res.render('user/dashboard',{ title: 'Account settings', userPayload: req.user ? req.user : '' });
     },
 
     // GET user registration page

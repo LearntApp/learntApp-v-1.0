@@ -1,11 +1,23 @@
-// IIFE - IMMEDIATELY INVOKED FUNCTION EXPRESSION
+'use strict';
+
+function validateForm() {
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.validated-form');
+    // Loop over them and prevent submission
+    Array.from(forms)
+    .forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+        }, false);
+    });
+}
+
 (function(){
 
-    function Start()
-    {
-        console.log("App Started...");
-    }    
-
-    window.addEventListener("load", Start);
-
-})();
+    window.addEventListener("load", validateForm, false);
+})(); // IIFE - IMMEDIATELY INVOKED FUNCTION EXPRESSION

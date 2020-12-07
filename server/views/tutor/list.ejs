@@ -1,7 +1,5 @@
 <main>
-
     <!-- <form action="" method="post"></form> -->
-
     <div class="uk-container">
         <h1 class="main-text text-center my-5">Find a Tutor</h1>
 
@@ -20,8 +18,6 @@
                 </select>
             </div>
 
-            
-    
             <div class="uk-inline pr-3">
                 <button class="uk-button uk-button-default uk-form-large main-text" type="button">Range</button>
                 <div uk-drop="mode: click">
@@ -101,70 +97,31 @@
             <div class="uk-inline pr-3">
                 <button class="uk-button uk-button-default uk-button-large main-text"><span uk-search-icon></span> Search</button>
             </div>
-
         </div>
 
-        <div class="my-5">
-
-            <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-3@s uk-margin" uk-grid>
-                <div class="uk-card-media-left uk-cover-container">
-                    <img src="/Assets/images/portrait1.jpg" alt="">
-                </div>
-                <div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title main-text">Ethan</h3>
-                        <p class="text-justify main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum a quod odit, tenetur porro quas repellendus corrupti mollitia, temporibus at aut quisquam? Tempora consequuntur minima tenetur exercitationem nesciunt velit obcaecati.</p>
+        <% for (let tutor of tutors) {%>
+            <div class="my-5">
+                <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-3@s uk-margin" uk-grid>
+                    <div class="uk-card-media-left uk-cover-container">
+                        <img src="/Assets/images/portrait7.jpg" alt="">
                     </div>
-                </div>
-                <div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title main-text">$44 / hr</h3>
-                        <h2 class="uk-card-title main-text">38 five <i class="fas fa-star"></i> reviews! </span></h2>
-
-                        <a class="uk-button uk-button-default uk-button-large main-text" href="#">View more details</a>
+                    <div>
+                        <div class="uk-card-body">
+                            <h2 class="uk-card-title main-text"><%= tutor.firstName %> <%= tutor.lastName %></h2>
+                            <p class="text-muted"><%= tutor.userType %> since: <%= tutor.dateCreated.getFullYear() %></p>
+                            <p class="text-justify main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum a quod odit, tenetur porro quas repellendus corrupti mollitia, temporibus at aut quisquam? Tempora consequuntur minima tenetur exercitationem nesciunt velit obcaecati.</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-3@s uk-margin" uk-grid>
-                <div class="uk-card-media-left uk-cover-container">
-                    <img src="/Assets/images/portrait2.jpg" alt="">
-                </div>
-                <div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title main-text">Alice</h3>
-                        <p class="text-justify main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum a quod odit, tenetur porro quas repellendus corrupti mollitia, temporibus at aut quisquam? Tempora consequuntur minima tenetur exercitationem nesciunt velit obcaecati.</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title main-text">$44 / hr</h3>
-                        <h2 class="uk-card-title main-text">38 five <i class="fas fa-star"></i> reviews! </span></h2>
-
-                        <a class="uk-button uk-button-default uk-button-large main-text" href="#">View more details</a>
+                    <div>
+                        <div class="uk-card-body">
+                            <h3 class="uk-card-title main-text">$44 / hr</h3>
+                            <h2 class="uk-card-title main-text">38 five <i class="fas fa-star"></i> reviews! </span></h2>
+    
+                            <a class="uk-button uk-button-default uk-button-large main-text" href="/tutor/<%= tutor.id %>">View more details</a>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-3@s uk-margin" uk-grid>
-                <div class="uk-card-media-left uk-cover-container">
-                    <img src="/Assets/images/portrait7.jpg" alt="">
-                </div>
-                <div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title main-text">Alex</h3>
-                        <p class="text-justify main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum a quod odit, tenetur porro quas repellendus corrupti mollitia, temporibus at aut quisquam? Tempora consequuntur minima tenetur exercitationem nesciunt velit obcaecati.</p>
-                    </div>
-                </div>
-                <div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title main-text">$44 / hr</h3>
-                        <h2 class="uk-card-title main-text">38 five <i class="fas fa-star"></i> reviews! </span></h2>
-
-                        <a class="uk-button uk-button-default uk-button-large main-text" href="#">View more details</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <% } %> 
+    </div>
 </main>

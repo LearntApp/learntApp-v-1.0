@@ -18,8 +18,8 @@ router.get('/home', indexController.displayHomePage);
 /* GET about page. */
 router.get('/about', indexController.displayAboutPage);
 
-/* GET tutorlistPage page. */
-router.get('/list', ensureAuthentication, indexController.displayListPage);
+/* GET tutor listPage page. */
+router.get('/list', indexController.displayListPage);
 
 
 

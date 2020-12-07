@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema; // change variable name
 
-const CommentSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        trim: true,
-        required: true,
-    },
+const ReviewSchema = new Schema({
     body: {
         type: String,
         trim: true,
@@ -29,9 +25,9 @@ const CommentSchema = new mongoose.Schema({
     }
 }, 
 {
-    collections: "comments"
+    collections: "reviews"
 });
 
-const Comment = mongoose.model('Comment', CommentSchema);
+const Review = mongoose.model('Review', ReviewSchema);
 
-module.exports = Comment;
+module.exports = Review;

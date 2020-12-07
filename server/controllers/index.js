@@ -1,5 +1,7 @@
 let express = require('express');
-let router = express.Router();
+
+// import User model
+const User = require('../models/user');
 
 
 // INDEX CONTROLLERS
@@ -12,7 +14,9 @@ module.exports = {
         res.render('about', { title: 'About', userPayload: req.user ? req.user : ''});
     },
 
-    displayListPage: (req, res, next) => {
-        res.render('tutor/list', { title: 'Find a Tutor', userPayload: req.user ? req.user : ''});
+    displayListPage: async (req, res, next) => {
+        const tutors = await User.find({ userType: 'tutor' });
+        console.log(tutors);
+        res.render('tutor/list', { title: 'Find a Tutor', tutors: tutors, userPayload: req.user ? req.user : '' });
     }
 }

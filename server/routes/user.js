@@ -4,7 +4,6 @@ var router = express.Router();
 
 // Import the student controllers
 let userController = require('../controllers/user');
-
 // Import authentication controller
 let { ensureAuthentication } = require('../config/auth');
 
@@ -27,5 +26,6 @@ router.get('/logout', userController.performLogout);
 
 /* GET user dashboard page. */
 router.get('/dashboard', ensureAuthentication, userController.displayUserDashboard);
+
 
 module.exports = router;
