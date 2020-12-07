@@ -3,6 +3,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 require('dotenv').config();
 var createError = require('http-errors');
+const methodOverride = require('method-override');
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 let path = require('path');
@@ -54,6 +55,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../node_modules'))); // added to predetermine the path for libraries used inside node modules
 app.use(express.static(path.join(__dirname, '../../public'))); // added to predetermine the path for libraries used inside node modules
+
+// method override
+app.use(methodOverride('_method'));
 
 // Express session
 app.use(session({

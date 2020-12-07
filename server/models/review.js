@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema; // change variable name
 
 const ReviewSchema = new Schema({
-    body: {
+    reviewBody: {
         type: String,
         trim: true,
         required: true,
@@ -12,11 +12,11 @@ const ReviewSchema = new Schema({
         required: true
     },
     studentId: {
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+        //required: true
     },
     tutorId: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true
     },
     dateCreated: {

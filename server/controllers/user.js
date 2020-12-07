@@ -74,6 +74,9 @@ module.exports = {
                     });
                 } else {
                     const newUser = new User({
+                        dateCreated: Date.now(),
+                        dateUpdated: Date.now(),
+                        userType: 'student',
                         firstName,
                         lastName,
                         email,

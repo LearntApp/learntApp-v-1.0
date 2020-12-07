@@ -56,59 +56,57 @@ const UserSchema = new Schema({
     }],
     tutorDetails: {
         dateCreated: {
-            type: Date,
-            default: Date.now
+            type: Date
         },
         updateDate: [{
-            type: Date,
-            default: Date.now
+            type: Date
         }],
         background: {
             type: String,
             trim: true,
-            required: true,
+            //required: true,
             lowercase: true
         },
         methodology: {
             type: String,
             trim: true,
-            required: true,
+            //required: true,
             lowercase: true
         },     
         Subjects: {
             type: [String],
             trim: true,
-            required: true,
+            //required: true,
             lowercase: true
         },
         HourlyRate: {
             type: Number,
             trim: true,
-            required: true,
+            //required: true,
             lowercase: true
         },
         Location: {
             type: [String],
             trim: true,
-            required: true,
+            //required: true,
             lowercase: true
         },
         preferredDays: {
             type: [String],
             trim: true,
-            required: true,
+            //required: true,
             lowercase: true
         },
         preferredHours: {
             type: [String],
             trim: true,
-            required: true,
+            //required: true,
             lowercase: true
         },
         academicLevels: {
             type: [String],
             trim: true,
-            required: true,
+            //required: true,
             lowercase: true
         }
     }

@@ -31,7 +31,7 @@
             <div class="col-6">
                 <!-- REVIEW FORM -->
                 <h2>Leave a Review</h2>
-                <form action="/user/<%= tutor._id %>/reviews" method="POST" novalidate class="validated-form">
+                <form action="/tutor/<%= tutor._id %>/reviews" method="POST" novalidate class="validated-form">
                     <div class="mb-3">
                         <label class="form-label" for="rating">Rating</label>
                         <input class="form-range" id="rating" type="range" min="1" max="5" name="rating">
@@ -53,9 +53,9 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5>Rating: <%= review.rating %></h5>
-                            <p><%= review.review %></p>
+                            <p><%= review.reviewBody %></p>
 
-                            <form action="/users/<%= tutor._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                            <form action="/tutor/<%= tutor._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
                         </div>
