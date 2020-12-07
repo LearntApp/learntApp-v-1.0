@@ -1,0 +1,228 @@
+    <div class="uk-container uk-card uk-card-default uk-card-hover my-5 py-5" uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-medium; delay: 100; repeat: true">
+        <h1 class="main-text">Your Account</h1>
+        <div>
+            <div uk-grid>
+                <div class="uk-width-auto@m">
+                    <ul class="uk-tab-left" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
+                        <li class="main-text"><a href="#">Account Details</a></li>
+                        <li class="main-text"><a href="#">Update Photo</a></li>
+                        <li class="main-text"><a href="#">Update Contact Details</a></li>
+                        <li class="main-text"><a href="#">Update Password</a></li>
+                        <li class="main-text"><a href="#">Become a Tutor</a></li>
+                    </ul>
+                </div>
+                <div class="uk-width-expand@m">
+
+                    
+
+                        <ul id="component-tab-left" class="uk-switcher">
+
+                            <!-- BEGIN SECTION : ACCOUNT DETAILS -->
+                            <li>
+                                <h2 class="main-text">Account Details</h2>
+                                <!-- FIRSTNAME -->
+                                <form action="" class="uk-form-horizontal">
+                                    <div class="mb-3">
+                                        <label class="uk-form-label uk-text-large" for="firstName">First Name</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-form-large " disabled id="firstName" type="text" value="<%= userPayload.firstName %>">
+                                        </div>
+                                    </div>
+
+                                    <!-- LASTNAME -->
+                                    <div class="mb-3">
+                                        <label class="uk-form-label uk-text-large" for="lastName">Last Name</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-form-large " disabled id="lastName" type="text" value="<%= userPayload.lastName %>">
+                                        </div>
+                                    </div>
+
+                                    <!-- EMAIL -->
+                                    <div class="mb-3">
+                                        <label class="uk-form-label uk-text-large" for="email">Email</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-form-large " disabled id="email" type="email" value="<%= userPayload.email %>">
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </li>
+                            <!-- END SECTION : ACCOUNT DETAILS -->
+
+                            <!-- BEGIN SECTION : UPDATE PHOTO -->
+                            <li class="text-center">
+                                <form action="" class="uk-form-horizontal" method="POST">
+                                    <h2 class="text-left main-text">Update Photo</h2>
+
+                                    <input value="<%= userPayload._id %>" name="id" hidden>
+                                    <input value="update photo" name="action" hidden>
+
+                                    <img class="uk-border-circle w-50 m-auto" src="/Assets/images/portrait1.jpg" alt="">
+                                    <div class="text-center mt-5 pt-5 m-auto w-100">
+                                        <div uk-form-custom>
+                                            <input type="file" accept="image/*">
+                                            <button class="uk-button uk-button-secondary main-text" type="button" tabindex="-1" name="photo" id="photo">Choose Your Best Photo</button>
+                                        </div>
+                                        <a class="uk-button uk-button-primary main-text" href="/updatePhoto/<%= userPayload._id %>" id=""><span uk-icon="pencil"></span> Update Photo</a>
+                                    </div>  
+                                </form>
+                            </li>
+                            <!-- END SECTION : UPDATE PHOTO -->
+
+                            <!-- BEGIN SECTION : UPDATE CONTACT DETAILS -->
+                            <li>
+                                <h2 class="main-text">Update Contact Details</h2>
+                                <form action="" class="uk-form-horizontal" method="POST">
+                                    
+                                    <input value="<%= userPayload._id %>" name="id" hidden>
+                                    <input value="update contact" name="action" hidden>
+
+                                    <!-- TELEPHONE -->
+                                    <div class="mb-3">
+                                        <label class="uk-form-label uk-text-large" for="phone">Phone Number</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-form-large " id="phone" type="tel" placeholder="123 456 7899" name="phone" value="<%= userPayload.phone %>" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center mt-5">
+                                        <button class="uk-button uk-button-primary main-text" type="submit" id="sendButton"><span uk-icon="sign-in"></span> Update</button>
+                                        <!-- <a class="uk-button uk-button-primary main-text" href="/updateContactInfo/<%= userPayload._id %>" id=""><span uk-icon="pencil"></span> Update</a> -->
+                                    </div> 
+                                </form>
+                            </li>
+                            <!-- END SECTION : UPDATE CONTACT DETAILS -->
+
+                            <!-- BEGIN SECTION : UPDATE PASSWORD -->
+                            <li>
+                                <h2 class="main-text">Update Password</h2>
+                                <form action="" class="uk-form-horizontal" method="POST">
+                                    <input value="<%= userPayload._id %>" name="id" hidden>
+                                    <input value="update password" name="action" hidden>
+                                    <!-- PASSWORD -->
+                                    <div class="mb-3">
+                                        <label class="uk-form-label uk-text-large" for="password">New Password</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-form-large " id="password" type="password" placeholder="New Password" name="password" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center mt-5">
+                                        <button class="uk-button uk-button-primary main-text" type="submit" id=""><span uk-icon="sign-in"></span> Update</button>
+                                    </div>  
+                                </form>
+                            </li>
+                            <!-- END SECTION : UPDATE PASSWORD -->
+
+
+
+                            <!-- BEGIN SECTION : BECOME A TUTOR -->
+                            <li>
+                                <h2 class="main-text">Become a Tutor</h2>
+                                <form action="" class="uk-form-horizontal" method="POST">
+
+                                    <input value="<%= userPayload._id %>" name="id" hidden>
+                                    <input value="register tutor" name="action" hidden>
+
+                                    <!-- PERSONAL BACKGROUND AND RESUME -->
+                                    <div class="uk-margin">
+                                        <div class="uk-text-large">Personal Background and Resume:</div>
+                                        <textarea class="uk-textarea uk-form-large" id="background" name="background" rows="8"></textarea>
+                                    </div> 
+
+                                    <!-- SERVICES PROVIDED -->
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label uk-text-large" for="subject">Subject</label>
+                                        <div class="uk-form-controls">
+                                            <select class="uk-select uk-form-large" id="subject" name="subject">
+                                                <option hidden disabled selected value> -- Select an Option -- </option>
+                                                <option value="PE">PE</option>
+                                                <option value="Math">Math</option>
+                                                <option value="French">French</option>
+                                                <option value="ESL">ESL</option>
+                                                <option value="Coding">Coding</option>
+                                                <option value="Music">Music</option>
+                                                <option value="Art">Art</option>
+                                                <option value="Science">Science</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- PREFERRED HOURS -->
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label uk-text-large" for="rate">Hourly Rate</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input uk-form-large" id="rate" name="rate" type="number" min="0" max="70" step="0.01" placeholder="$15 per hour">
+                                        </div>
+                                    </div>
+
+                                    <!-- LOCATION -->
+                                    <div class="uk-margin">
+                                        <div class="uk-form-label uk-text-large "> Location</div>
+                                        <div class="uk-form-controls uk-form-controls-text">
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="locations" value="Online"> Online</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="locations" value="Offline"> Offline</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- PREFERRED DAYS -->
+                                    <div class="uk-margin">
+                                        <div class="uk-form-label uk-text-large">Preferred Days</div>
+                                        <div class="uk-form-controls uk-form-controls-text">
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="times" value="Monday"> Monday</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Tuesday"> Tuesday</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Wednesday"> Wednesday</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Thursday"> Thursday</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Friday"> Friday</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Saturday"> Saturday</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Sunday"> Sunday</label>
+                                        </div>
+                                    </div>
+
+                                    <!-- PREFERRED HOURS -->
+                                    <div class="uk-margin">
+                                        <div class="uk-form-label uk-text-large">Preferred Hours</div>
+                                        <div class="uk-form-controls uk-form-controls-text">
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Morning"> Morning</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Afternoon"> Afternoon</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Evening"> Evening</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- LEVELS -->
+                                    <div class="uk-margin">
+                                        <div class="uk-form-label uk-text-large">Levels</div>
+                                        <div class="uk-form-controls uk-form-controls-text">
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="Tertiary"> College Level and Above</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="highSec"> High School</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="lowSec"> Junior High</label>
+                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="elementary"> Elementary</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- PROFILE BANNER -->
+                                    <div class="uk-margin">
+                                        <label class="uk-form-label uk-text-large" for="banner">Profile Banner</label>
+                                        <div class="uk-form-controls">
+                                            <input class="uk-input uk-form-large" id="banner" name="banner" type="text" placeholder="I specialize in teaching...">
+                                        </div>
+                                    </div>
+
+                                    <!-- TEACHING METHODOLOGY -->
+                                    <div class="uk-margin">
+                                        <div class="uk-text-large">Your Teaching Methodology:</div>
+                                        <textarea class="uk-textarea uk-form-large" id="methodology" name="methodology" rows="8"></textarea>
+                                    </div> 
+
+                                    <div class="text-center mt-5">
+                                        <button class="uk-button uk-button-primary main-text" type="submit" id=""><span uk-icon="sign-in"></span> Update</button>
+                                    </div>  
+                                </form>
+                            </li>
+                        
+                            <!-- END SECTION : BECOME A TUTOR -->
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </div>
