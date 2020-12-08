@@ -27,5 +27,13 @@ router.get('/logout', userController.performLogout);
 /* GET user dashboard page. */
 router.get('/dashboard', ensureAuthentication, userController.displayUserDashboard);
 
+// POST user update - HANDLE user photo update
+router.post('/dashboard', userController.processUserUpdatePhone);
+
+// POST user update - HANDLE user photo update
+router.post('/updatePhoto/:id', userController.processUserRegistration);
+
+// POST user update - HANDLE user photo update
+router.post('/updateContactInfo/:id', userController.processUserUpdatePhone);
 
 module.exports = router;

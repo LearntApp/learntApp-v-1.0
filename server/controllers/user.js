@@ -17,7 +17,7 @@ module.exports = {
 
     // GET user dashboard
     displayUserDashboard: (req, res) => {
-        res.render('user/dashboard',{ title: 'Account settings', userPayload: req.user ? req.user : '' });
+        res.render('user/altDash',{ title: 'User Dashboard', userPayload: req.user ? req.user : '' });
     },
 
     // GET user registration page
@@ -100,6 +100,47 @@ module.exports = {
                 }
             })
             .catch(err => console.log(err));
+        }
+    },
+
+     // POST user registration page - HANDLE user registration
+     processUserUpdatePhone: (req, res) => {
+        // grab form inputs
+        const {
+                id,
+                action,
+                password, 
+                phone, 
+                background, 
+                subject,
+                rate,
+                locations,
+                days,
+                hours,
+                levels,
+                banner,
+                methodology
+             } = req.body;
+
+        if(action === 'update password')
+        {
+            console.log("process password");
+            console.log(req.body);
+        }
+        if(action === 'update contact')
+        {
+            console.log("process phone");
+            console.log(req.body);
+        }
+        if(action === 'register tutor')
+        {
+            console.log("registering tutor");
+            console.log(req.body);
+        }
+        if(action === 'update tutor')
+        {
+            console.log("update tutor");
+            console.log(req.body);
         }
     },
 
