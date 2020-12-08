@@ -25,7 +25,7 @@ console.log('App Started...');
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // DB Config
-const DB = process.env.MONGO_URI;
+const DB = "mongodb+srv://santiago:OCIImJVgF3Jb2Ii0@mongodbserver.p6m24.mongodb.net/LEARNT?retryWrites=true&w=majority";
 // Connect to Mongo
 mongoose.connect(DB, {useNewUrlParser: true, useUnifiedTopology: true});
 let mongoDB = mongoose.connection;
