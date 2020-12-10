@@ -122,25 +122,116 @@ module.exports = {
                 methodology
              } = req.body;
 
-        if(action === 'update password')
+        if(action === 'update photo')
         {
-            console.log("process password");
-            console.log(req.body);
+            console.log("update photo")
+            let updatedUser = User({
+                "_id": id
+            });
+            
         }
         if(action === 'update contact')
         {
-            console.log("process phone");
-            console.log(req.body);
+            let updatedUser = User({
+                "_id": id,
+                "phone": phone
+            });
+
+            User.updateOne({_id: id}, updatedUser, (err) => {
+                if (err) 
+                {
+                    console.log(err);
+                    res.end();    
+                } 
+                else 
+                {
+                    User.findById(id, (err, updatedUser1) => {
+                        if (err) 
+                        {
+                            console.log(err);
+                            res.end();
+                        }
+                        else 
+                        {
+                            //SHOW THE EDIT VIEW
+                            res.render('user/altDash',{ title: 'User Dashboard', userPayload: updatedUser1 ? updatedUser1 : ''})
+                        }
+                    });   
+                }
+            });
         }
-        if(action === 'register tutor')
+        if(action === 'update password')
         {
-            console.log("registering tutor");
-            console.log(req.body);
+            let updatedUser = User({
+                "_id": id,
+                "password": password
+            });
+
+            User.updateOne({_id: id}, updatedUser, (err) => {
+                if (err) 
+                {
+                    console.log(err);
+                    res.end();    
+                } 
+                else 
+                {
+                    User.findById(id, (err, updatedUser1) => {
+                        if (err) 
+                        {
+                            console.log(err);
+                            res.end();
+                        }
+                        else 
+                        {
+                            //SHOW THE EDIT VIEW
+                            res.render('user/altDash',{ title: 'User Dashboard', userPayload: updatedUser1 ? updatedUser1 : ''})
+                        }
+                    });   
+                }
+            });
         }
-        if(action === 'update tutor')
+        if(action === 'register / update tutor')
         {
-            console.log("update tutor");
             console.log(req.body);
+
+            let updatedUser = User({
+                "_id": id,
+                "background": background,
+                "subject": subject,
+                "hourlyRate": rate,
+                "banner": banner,
+                "methodology": methodology,
+                "locations": locations,
+                "preferredDays": days, 
+                "preferredHours": hours,
+                "academicLevels": levels,
+                "userType": 'tutor',
+                "dataUpdated" : Date.now()
+            });
+
+            User.updateOne({_id: id}, updatedUser, (err) => {
+                if (err) 
+                {
+                    console.log(err);
+                    res.end();    
+                } 
+                else 
+                {
+                    User.findById(id, (err, updatedUser1) => {
+                        if (err) 
+                        {
+                            console.log(err);
+                            res.end();
+                        }
+                        else 
+                        {
+                            console.log(updatedUser1);
+                            //SHOW THE EDIT VIEW
+                            res.render('user/altDash',{ title: 'User Dashboard', userPayload: updatedUser1 ? updatedUser1 : ''})
+                        }
+                    });   
+                }
+            });
         }
     },
 

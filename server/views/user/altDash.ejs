@@ -8,7 +8,11 @@
                         <li class="main-text"><a href="#">Update Photo</a></li>
                         <li class="main-text"><a href="#">Update Contact Details</a></li>
                         <li class="main-text"><a href="#">Update Password</a></li>
-                        <li class="main-text"><a href="#">Become a Tutor</a></li>
+                        <% if( userPayload.userType == 'student') { %>
+                            <li class="main-text"><a href="#">Become a Tutor</a></li>
+                        <% } else { %>
+                            <li class="main-text"><a href="#">Update Tutorial Services</a></li>
+                        <% } %>
                     </ul>
                 </div>
                 <div class="uk-width-expand@m">
@@ -57,13 +61,13 @@
                                     <input value="<%= userPayload._id %>" name="id" hidden>
                                     <input value="update photo" name="action" hidden>
 
-                                    <img class="uk-border-circle w-50 m-auto" src="/Assets/images/portrait1.jpg" alt="">
+                                    <img id="profilePic" class="uk-border-circle w-50 m-auto" src="/Assets/images/portrait1.jpg" alt="">
                                     <div class="text-center mt-5 pt-5 m-auto w-100">
                                         <div uk-form-custom>
-                                            <input type="file" accept="image/*">
+                                            <input id="" type="file" accept="image/*" onchange="previewFile(this);">
                                             <button class="uk-button uk-button-secondary main-text" type="button" tabindex="-1" name="photo" id="photo">Choose Your Best Photo</button>
                                         </div>
-                                        <a class="uk-button uk-button-primary main-text" href="/updatePhoto/<%= userPayload._id %>" id=""><span uk-icon="pencil"></span> Update Photo</a>
+                                        <button class="uk-button uk-button-primary main-text" type="submit" id="sendButton"><span uk-icon="sign-in"></span> Update Photo</button>
                                     </div>  
                                 </form>
                             </li>
@@ -87,7 +91,6 @@
 
                                     <div class="text-center mt-5">
                                         <button class="uk-button uk-button-primary main-text" type="submit" id="sendButton"><span uk-icon="sign-in"></span> Update</button>
-                                        <!-- <a class="uk-button uk-button-primary main-text" href="/updateContactInfo/<%= userPayload._id %>" id=""><span uk-icon="pencil"></span> Update</a> -->
                                     </div> 
                                 </form>
                             </li>
@@ -118,32 +121,119 @@
 
                             <!-- BEGIN SECTION : BECOME A TUTOR -->
                             <li>
-                                <h2 class="main-text">Become a Tutor</h2>
+                                <% if( userPayload.userType == 'student') { %>
+                                    <h2 class="main-text">Become a Tutor</h2>
+                                <% } else { %>
+                                    <h2 class="main-text">Update Tutorial Services</h2>
+                                <% } %>
+
                                 <form action="" class="uk-form-horizontal" method="POST">
 
                                     <input value="<%= userPayload._id %>" name="id" hidden>
-                                    <input value="register tutor" name="action" hidden>
+                                    <input value="register / update tutor" name="action" hidden>
 
                                     <!-- PERSONAL BACKGROUND AND RESUME -->
                                     <div class="uk-margin">
                                         <div class="uk-text-large">Personal Background and Resume:</div>
-                                        <textarea class="uk-textarea uk-form-large" id="background" name="background" rows="8"></textarea>
+                                        <textarea class="uk-textarea uk-form-large" id="background" name="background" rows="8"><%= userPayload.background %></textarea>
                                     </div> 
-
+                                  
                                     <!-- SERVICES PROVIDED -->
                                     <div class="uk-margin">
                                         <label class="uk-form-label uk-text-large" for="subject">Subject</label>
                                         <div class="uk-form-controls">
                                             <select class="uk-select uk-form-large" id="subject" name="subject">
-                                                <option hidden disabled selected value> -- Select an Option -- </option>
-                                                <option value="PE">PE</option>
-                                                <option value="Math">Math</option>
-                                                <option value="French">French</option>
-                                                <option value="ESL">ESL</option>
-                                                <option value="Coding">Coding</option>
-                                                <option value="Music">Music</option>
-                                                <option value="Art">Art</option>
-                                                <option value="Science">Science</option>
+                                                <% if( userPayload.subject == '') { %>
+                                                    <option hidden disabled selected value> -- Select an Option -- </option>
+                                                    <option value="PE" >PE</option>
+                                                    <option value="Math">Math</option>
+                                                    <option value="French">French</option>
+                                                    <option value="ESL">ESL</option>
+                                                    <option value="Coding">Coding</option>
+                                                    <option value="Music">Music</option>
+                                                    <option value="Art">Art</option>
+                                                    <option value="Science">Science</option>
+                                                <% } %>
+                                                <% if( userPayload.subject == 'PE') { %>
+                                                    <option value="PE" selected>PE</option>
+                                                    <option value="Math">Math</option>
+                                                    <option value="French">French</option>
+                                                    <option value="ESL">ESL</option>
+                                                    <option value="Coding">Coding</option>
+                                                    <option value="Music">Music</option>
+                                                    <option value="Art">Art</option>
+                                                    <option value="Science">Science</option>
+                                                <% } %>
+                                                <% if( userPayload.subject == 'Math') { %>
+                                                    <option value="PE">PE</option>
+                                                    <option value="Math" selected>Math</option>
+                                                    <option value="French">French</option>
+                                                    <option value="ESL">ESL</option>
+                                                    <option value="Coding">Coding</option>
+                                                    <option value="Music">Music</option>
+                                                    <option value="Art">Art</option>
+                                                    <option value="Science">Science</option>
+                                                <% } %>
+                                                <% if( userPayload.subject == 'French') { %>
+                                                    <option value="PE">PE</option>
+                                                    <option value="Math">Math</option>
+                                                    <option value="French" selected>French</option>
+                                                    <option value="ESL">ESL</option>
+                                                    <option value="Coding">Coding</option>
+                                                    <option value="Music">Music</option>
+                                                    <option value="Art">Art</option>
+                                                    <option value="Science">Science</option>
+                                                <% } %>
+                                                <% if( userPayload.subject == 'ESL') { %>
+                                                    <option value="PE">PE</option>
+                                                    <option value="Math">Math</option>
+                                                    <option value="French">French</option>
+                                                    <option value="ESL" selected>ESL</option>
+                                                    <option value="Coding">Coding</option>
+                                                    <option value="Music">Music</option>
+                                                    <option value="Art">Art</option>
+                                                    <option value="Science">Science</option>
+                                                <% } %>
+                                                <% if( userPayload.subject == 'Coding') { %>
+                                                    <option value="PE">PE</option>
+                                                    <option value="Math">Math</option>
+                                                    <option value="French">French</option>
+                                                    <option value="ESL">ESL</option>
+                                                    <option value="Coding" selected>Coding</option>
+                                                    <option value="Music">Music</option>
+                                                    <option value="Art">Art</option>
+                                                    <option value="Science">Science</option>
+                                                <% } %>
+                                                <% if( userPayload.subject == 'Music') { %>
+                                                    <option value="PE">PE</option>
+                                                    <option value="Math">Math</option>
+                                                    <option value="French">French</option>
+                                                    <option value="ESL">ESL</option>
+                                                    <option value="Coding">Coding</option>
+                                                    <option value="Music" selected>Music</option>
+                                                    <option value="Art">Art</option>
+                                                    <option value="Science">Science</option>
+                                                <% } %>
+                                                <% if( userPayload.subject == 'Art') { %>
+                                                    <option value="PE">PE</option>
+                                                    <option value="Math">Math</option>
+                                                    <option value="French">French</option>
+                                                    <option value="ESL">ESL</option>
+                                                    <option value="Coding">Coding</option>
+                                                    <option value="Music">Music</option>
+                                                    <option value="Art" selected>Art</option>
+                                                    <option value="Science">Science</option>
+                                                <% } %>
+                                                <% if( userPayload.subject == 'Science') { %>
+                                                    <option value="PE">PE</option>
+                                                    <option value="Math">Math</option>
+                                                    <option value="French">French</option>
+                                                    <option value="ESL">ESL</option>
+                                                    <option value="Coding">Coding</option>
+                                                    <option value="Music">Music</option>
+                                                    <option value="Art">Art</option>
+                                                    <option value="Science" selected>Science</option>
+                                                <% } %>
                                             </select>
                                         </div>
                                     </div>
@@ -152,7 +242,7 @@
                                     <div class="uk-margin">
                                         <label class="uk-form-label uk-text-large" for="rate">Hourly Rate</label>
                                         <div class="uk-form-controls">
-                                            <input class="uk-input uk-form-large" id="rate" name="rate" type="number" min="0" max="70" step="0.01" placeholder="$15 per hour">
+                                            <input class="uk-input uk-form-large" id="rate" name="rate" type="number" min="0" max="70" step="0.01" placeholder="$15 per hour" value="<%= userPayload.hourlyRate %>">
                                         </div>
                                     </div>
 
@@ -160,22 +250,58 @@
                                     <div class="uk-margin">
                                         <div class="uk-form-label uk-text-large "> Location</div>
                                         <div class="uk-form-controls uk-form-controls-text">
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="locations" value="Online"> Online</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="locations" value="Offline"> Offline</label>
+                                            <% if( userPayload.locations.includes("Online") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="locations" value="Online" checked> Online</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="locations" value="Online"> Online</label>
+                                             <% } %>
+                                             <% if( userPayload.locations.includes("Offline") == true) { %>
+                                                 <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="locations" value="Offline" checked> Offline</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="locations" value="Offline"> Offline</label>
+                                            <% } %>
                                         </div>
                                     </div>
-
+ 
                                     <!-- PREFERRED DAYS -->
                                     <div class="uk-margin">
                                         <div class="uk-form-label uk-text-large">Preferred Days</div>
                                         <div class="uk-form-controls uk-form-controls-text">
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="times" value="Monday"> Monday</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Tuesday"> Tuesday</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Wednesday"> Wednesday</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Thursday"> Thursday</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Friday"> Friday</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Saturday"> Saturday</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Sunday"> Sunday</label>
+                                            <% if( userPayload.preferredDays.includes("Monday") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Monday" checked> Monday</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Monday"> Monday</label>
+                                             <% } %>
+                                             <% if( userPayload.preferredDays.includes("Tuesday") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Tuesday" checked> Tuesday</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Tuesday"> Tuesday</label>
+                                             <% } %>
+                                             <% if( userPayload.preferredDays.includes("Wednesday") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Wednesday" checked> Wednesday</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Wednesday"> Wednesday</label>
+                                             <% } %>
+                                             <% if( userPayload.preferredDays.includes("Thursday") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Thursday" checked> Thursday</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Thursday"> Thursday</label>
+                                             <% } %>
+                                             <% if( userPayload.preferredDays.includes("Friday") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Friday" checked> Friday</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Friday"> Friday</label>
+                                             <% } %>
+                                             <% if( userPayload.preferredDays.includes("Saturday") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Saturday" checked> Saturday</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Saturday"> Saturday</label>
+                                             <% } %>
+                                             <% if( userPayload.preferredDays.includes("Sunday") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Sunday" checked> Sunday</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="days" value="Sunday"> Sunday</label>
+                                             <% } %>
                                         </div>
                                     </div>
 
@@ -183,9 +309,21 @@
                                     <div class="uk-margin">
                                         <div class="uk-form-label uk-text-large">Preferred Hours</div>
                                         <div class="uk-form-controls uk-form-controls-text">
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Morning"> Morning</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Afternoon"> Afternoon</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Evening"> Evening</label>
+                                            <% if( userPayload.preferredHours.includes("Morning") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Morning" checked> Morning</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Morning"> Morning</label>
+                                             <% } %>
+                                             <% if( userPayload.preferredHours.includes("Afternoon") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Afternoon" checked> Afternoon</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Afternoon"> Afternoon</label>
+                                             <% } %>
+                                             <% if( userPayload.preferredHours.includes("Evening") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Evening" checked> Evening</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="hours" value="Evening"> Evening</label>
+                                             <% } %>
                                         </div>
                                     </div>
                                     
@@ -193,10 +331,26 @@
                                     <div class="uk-margin">
                                         <div class="uk-form-label uk-text-large">Levels</div>
                                         <div class="uk-form-controls uk-form-controls-text">
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="Tertiary"> College Level and Above</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="highSec"> High School</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="lowSec"> Junior High</label>
-                                            <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="elementary"> Elementary</label>
+                                            <% if( userPayload.academicLevels.includes("Tertiary") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="Tertiary" checked> College Level and Above</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="Tertiary"> College Level and Above</label>
+                                             <% } %>
+                                             <% if( userPayload.academicLevels.includes("highSec") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="highSec" checked> High School</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="highSec"> High School</label>
+                                             <% } %>
+                                             <% if( userPayload.academicLevels.includes("lowSec") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="lowSec" checked> Junior High</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="lowSec"> Junior High</label>
+                                             <% } %>
+                                             <% if( userPayload.academicLevels.includes("elementary") == true) { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="elementary" checked> Elementary</label>
+                                             <% } else { %>
+                                                <label class="main-text"><input class="uk-checkbox" type="checkbox"  name="levels" value="elementary"> Elementary</label>
+                                             <% } %>
                                         </div>
                                     </div>
                                     
@@ -204,14 +358,15 @@
                                     <div class="uk-margin">
                                         <label class="uk-form-label uk-text-large" for="banner">Profile Banner</label>
                                         <div class="uk-form-controls">
-                                            <input class="uk-input uk-form-large" id="banner" name="banner" type="text" placeholder="I specialize in teaching...">
+                                            <input class="uk-input uk-form-large" id="banner" name="banner" type="text" placeholder="I specialize in teaching..." 
+                                            value="<%= userPayload.banner %>">
                                         </div>
                                     </div>
 
                                     <!-- TEACHING METHODOLOGY -->
                                     <div class="uk-margin">
                                         <div class="uk-text-large">Your Teaching Methodology:</div>
-                                        <textarea class="uk-textarea uk-form-large" id="methodology" name="methodology" rows="8"></textarea>
+                                        <textarea class="uk-textarea uk-form-large" id="methodology" name="methodology" rows="8"><%= userPayload.methodology %></textarea>
                                     </div> 
 
                                     <div class="text-center mt-5">

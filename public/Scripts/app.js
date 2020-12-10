@@ -17,7 +17,30 @@ function validateForm() {
     });
 }
 
-(function(){
+function previewFile(input){
+    var file = $("input[type=file]").get(0).files[0];
+
+    if(file){
+        var reader = new FileReader();
+
+        reader.onload = function(){
+            $("#profilePic").attr("src", reader.result);
+        }
+
+        reader.readAsDataURL(file);
+    }
+}
+
+(function()
+{
 
     window.addEventListener("load", validateForm, false);
+
+    window.addEventListener("load", () =>
+    {
+        if(document.title === "User Dashboard")
+        {
+            
+        }
+    });
 })(); // IIFE - IMMEDIATELY INVOKED FUNCTION EXPRESSION
