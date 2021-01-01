@@ -1,5 +1,5 @@
 <main>
-    <!-- <form action="" method="post"></form> -->
+    <form action="" method="POST">
     <div class="uk-container">
         <h1 class="main-text text-center my-5">Find a Tutor</h1>
 
@@ -7,14 +7,14 @@
 
             <div class="uk-inline pr-3">
                 <select class="uk-select uk-form-large main-text" id="Subject" name="Subject">
-                    <option>PE</option>
-                    <option>Math</option>
-                    <option>French</option>
-                    <option>ESL</option>
-                    <option>Coding</option>
-                    <option>Music</option>
-                    <option>Art</option>
-                    <option>Science</option>
+                    <option value="PE" >PE</option>
+                    <option value="Math">Math</option>
+                    <option value="French">French</option>
+                    <option value="ESL">ESL</option>
+                    <option value="Coding">Coding</option>
+                    <option value="Music">Music</option>
+                    <option value="Art">Art</option>
+                    <option value="Science">Science</option>
                 </select>
             </div>
 
@@ -23,23 +23,23 @@
                 <div uk-drop="mode: click">
                     <div class="uk-card uk-card-body uk-card-default">
                         <ul class="uk-nav uk-dropdown-nav">
-                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng15"> Less than $15 / hr</label><br>
-                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng25"> Less than $25 / hr</label><br>
-                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng35"> Less than $35 / hr</label><br>
-                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng45"> Less than $45 / hr</label><br>
-                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng55"> Less than $55 / hr</label><br>
-                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng65"> Less than $65 / hr</label><br>
+                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng15" value="15" checked> Less than $15 / hr</label><br>
+                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng25" value="25"> Less than $25 / hr</label><br>
+                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng35" value="35"> Less than $35 / hr</label><br>
+                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng45" value="45"> Less than $45 / hr</label><br>
+                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng55" value="55"> Less than $55 / hr</label><br>
+                            <label class="main-text"><input class="uk-radio" type="radio" name="Range" id="radRng65" value="65"> Less than $65 / hr</label><br>
                         </ul>
                     </div>
                 </div>
             </div>
 
             <div class="uk-inline pr-3">
-                <button class="uk-button uk-button-default uk-form-large main-text" type="button">Location</button>
+                <button class="uk-button uk-button-default uk-form-large main-text" type="button">Locations</button>
                 <div uk-drop="mode: click">
                     <div class="uk-card uk-card-body uk-card-default">
-                        <label class="main-text"><input class="uk-checkbox" type="checkbox" checked> Online</label>
-                        <label class="main-text"><input class="uk-checkbox" type="checkbox"> Offline</label>
+                        <label class="main-text"><input class="uk-checkbox" type="checkbox" name="locations" value="Online" checked> Online</label>
+                        <label class="main-text"><input class="uk-checkbox" type="checkbox" name="locations" value="Offline"> Offline</label>
                     </div>
                 </div>
             </div>
@@ -96,8 +96,10 @@
 
             <div class="uk-inline pr-3">
                 <button class="uk-button uk-button-default uk-button-large main-text"><span uk-search-icon></span> Search</button>
+                <a class="uk-button uk-button-default uk-button-large main-text" href="/list">Reset</a>
             </div>
         </div>
+    </form> 
 
         <% for (let tutor of tutors) {%>
             <div class="my-5">
@@ -114,8 +116,7 @@
                     </div>
                     <div>
                         <div class="uk-card-body">
-                            <h3 class="uk-card-title main-text">$44 / hr</h3>
-                            <h2 class="uk-card-title main-text">38 five <i class="fas fa-star"></i> reviews! </span></h2>
+                            <h3 class="uk-card-title main-text">$<%= tutor.hourlyRate %> / hr</h3>
     
                             <a class="uk-button uk-button-default uk-button-large main-text" href="/tutor/<%= tutor.id %>">View more details</a>
                         </div>

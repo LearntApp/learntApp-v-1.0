@@ -21,6 +21,7 @@ router.get('/about', indexController.displayAboutPage);
 /* GET tutor listPage page. */
 router.get('/list', indexController.displayListPage);
 
-
+/* POST tutor listPage page. */
+router.post('/list', indexController.displaySearchedListPage);
 
 module.exports = router;

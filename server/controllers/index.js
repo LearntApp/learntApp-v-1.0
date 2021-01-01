@@ -18,5 +18,16 @@ module.exports = {
         const tutors = await User.find({ userType: 'tutor' });
         console.log(tutors);
         res.render('tutor/list', { title: 'Find a Tutor', tutors: tutors, userPayload: req.user ? req.user : '' });
+    },
+
+    displaySearchedListPage: async (req, res, next) => {
+        const tutors = await User.find({ userType: 'tutor', 
+                                         subject: req.body.Subject, 
+                                         hourlyRate: { $lt: req.body.Range },
+                                         locations: { $in: req.body.locations },
+                                         preferredHours: { $in: req.body.times },
+                                         preferredDays: { $in: req.body.days } });
+        console.log(tutors);
+        res.render('tutor/list', { title: 'Find a Tutor', tutors: tutors, userPayload: req.user ? req.user : '' });
     }
 }

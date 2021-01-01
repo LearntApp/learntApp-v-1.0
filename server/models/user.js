@@ -15,7 +15,6 @@ const UserSchema = new Schema({
     userType: {
         type: String,
         trim: true,
-        default: 'student',
         lowercase: true,
         required: true
     },
@@ -54,61 +53,59 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Review'
     }],
-    tutorDetails: {
-        dateCreated: {
-            type: Date
-        },
-        updateDate: [{
-            type: Date
-        }],
-        background: {
-            type: String,
-            trim: true,
-            //required: true,
-            lowercase: true
-        },
-        methodology: {
-            type: String,
-            trim: true,
-            //required: true,
-            lowercase: true
-        },     
-        Subjects: {
-            type: [String],
-            trim: true,
-            //required: true,
-            lowercase: true
-        },
-        HourlyRate: {
-            type: Number,
-            trim: true,
-            //required: true,
-            lowercase: true
-        },
-        Location: {
-            type: [String],
-            trim: true,
-            //required: true,
-            lowercase: true
-        },
-        preferredDays: {
-            type: [String],
-            trim: true,
-            //required: true,
-            lowercase: true
-        },
-        preferredHours: {
-            type: [String],
-            trim: true,
-            //required: true,
-            lowercase: true
-        },
-        academicLevels: {
-            type: [String],
-            trim: true,
-            //required: true,
-            lowercase: true
-        }
+    background: {
+        type: String,
+        trim: true,
+        //required: true,
+        lowercase: true
+    },
+    methodology: {
+        type: String,
+        trim: true,
+        //required: true,
+        lowercase: true
+    }, 
+    banner: {
+        type: String,
+        trim: true,
+        //required: true,
+        lowercase: true
+    },       
+    subject: {
+        type: [String],
+        trim: true,
+        //required: true,
+        lowercase: true
+    },
+    hourlyRate: {
+        type: Number,
+        trim: true,
+        //required: true,
+        lowercase: true
+    },
+    locations: {
+        type: [String],
+        trim: true,
+        //required: true,
+        lowercase: true
+    },
+    preferredDays: {
+        type: [String],
+        trim: true,
+        //required: true,
+        lowercase: true
+    },
+    preferredHours: {
+        type: [String],
+        trim: true,
+        //required: true,
+        lowercase: true
+    },
+    academicLevels: {
+        type: [String],
+        trim: true,
+        //required: true,
+        lowercase: true
     }
 }, 
 {
